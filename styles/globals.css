@@ -17,12 +17,20 @@
 }
 
 .head{
-  width: fit-content;
+  display: flex;
+  flex-direction: row;
 }
 .headContainer{
   display: flex;
-  justify-content: center;
-  padding-top: 2rem;
+  flex-direction: row;
+  gap:1rem;
+  padding: 2rem;
+
+}
+.name{
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .padding-container{
@@ -51,4 +59,9 @@
 }
 .caption{
   display: block;
+}
+.flex-container{
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
 }
