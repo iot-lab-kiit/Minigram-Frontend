@@ -1,12 +1,12 @@
 import React from 'react'
-import sidebar from '../components/sidebar.js'
-import messages from '../components/messages.js'
-const index = () => {
+import {Sidebar} from '../components/Sidebar.js'
+import {Messages} from '../components/Messages.js'
+
+export default function index(){
   return (
     <div>
-      <sidebar/>
-      <messages/>
+      <Messages/>
+      <Sidebar/>
     </div>
   )
 }
-export default sidebar;
