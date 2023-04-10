@@ -19,11 +19,15 @@
       "@/*": ["./*"]
     }
   },
+<<<<<<< HEAD
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/Sidebar.js", "pages/index.js"],
+=======
 
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/index.js", "pages/_app.tsx"],
   "exclude": ["pages/node_modules"]
 =======
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/sidebar.js", "pages/index.js"],
+>>>>>>> fc4f3d2d3ab21a91c3efb69ca26bd97c14718f1e
   "exclude": ["node_modules"]
 
 }
