@@ -47,9 +47,11 @@ export const Sidebar = () => {
    
 
     <div className='side-contain'>
+    <div className='account-avatar'>
     <Avatar alt="Remy Sharp" src="https://m.media-amazon.com/images/M/MV5BMTA2OTU0MjEwMDVeQTJeQWpwZ15BbWU4MDIzNjU1MTAx._V1_.jpg" ></Avatar> </div>
     <div className='account-link'>Account</div>
     <div className='account-icon'><ArrowDropDownIcon/></div> 
+    </div>
     </div>
     </div>
   )
