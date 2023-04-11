@@ -246,3 +246,27 @@ color: #A974FF;
 .side-contain{
   left: 1112.5px;
 }
+.account-link{
+  position: absolute;
+width: 68px;
+height: 11px;
+left: 86.19px;
+top: 354px;
+color: #25396F;
+}
+.account-avatar{
+  position: absolute;
+width: 37.1px;
+height: 37.1px;
+left: 78px;
+top: 384px;
+}
+.account-icon{
+  position: absolute;
+left: 14.38%;
+right: 84.95%;
+top: 11.95%;
+bottom: 87.58%;
+
+background: #000000;
+}
