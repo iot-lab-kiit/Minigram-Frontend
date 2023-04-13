@@ -26,7 +26,11 @@ export const Cards=(req, res) => {
     setExpanded(!expanded);
   };
 
+  const numbers=[1,2,3,4,5]
+
   return (
+    <div className='column-name'>
+      {numbers.map((number)=>(
     <Card className='Card1' sx={{ maxWidth: 345 }}>
       <div className="headContainer">
           <Avatar aria-label="recipe" src="http://t3.gstatic.com/licensed-image?q=tbn:ANd9GcRiII9371KsNrl7NJMJiH1MSBljoseqOwOyce6SHU1D63HY3ay0gowModGJ4DeZ6ZlORYbDeFMI7oKkQGA">
@@ -88,5 +92,10 @@ export const Cards=(req, res) => {
         </div>
       </div>
     </Card>
+    ))}
+    </div>
   );
+  
 }
+
+
