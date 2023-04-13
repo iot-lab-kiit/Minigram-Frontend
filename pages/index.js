@@ -6,7 +6,7 @@ import {Messages} from '../components/Messages.js'
 
 export default function index(){
   return (
-    <div>
+    <div className='hello'>
       <Sidebar/>
       <Cards/>
       <Messages/>

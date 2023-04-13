@@ -1,14 +1,14 @@
-
+.column{
+  display: flex;
+  flex-direction: column;
+}
 .Card1
 {
-  margin:7rem 0 7rem 25rem;  
+  margin:7rem 0 7rem 30rem;  
   max-height: 601px;
   height: 100%;
   max-width: 580px;
   width: 100%;
-  position: absolute;
-  top: 100px;
-  left: 50px;
   box-shadow: 0px 2px 6px 2px rgba(125, 125, 125, 0.25);
   padding-bottom:8rem;
 }
@@ -101,22 +101,22 @@ color: #000000;
 }
 .message-icon{
     position: absolute;
-left: 79.19px;
-right: 91.94%;
-top: 224px;
-bottom: 96.5%;
+    left: 79.19px;
+    right: 91.94%;
+    top: 224px;
+    bottom: 96.5%;
 }
 
 .padding-container{
-  padding: 2rem;
-  color:  #A974FF;
+    padding: 2rem;
+    color:  #A974FF;
 }
 .profile-link{
     position: absolute;
-width: 43px;
-height: 11px;
-left: 115.19px;
-top: 272px;
+    width: 43px;
+    height: 11px;
+    left: 115.19px;
+    top: 272px;
 }
 
 
@@ -172,27 +172,27 @@ top: 272px;
 }
 .message-icon-1{
     position: absolute;
-width: 46px;
-height: 46.89px;
-left: 1054.13px;
-top: 222.95px;
+    width: 46px;
+    height: 46.89px;
+    left: 1054.13px;
+    top: 222.95px;
 
 }
 .message-name-1{
-position: absolute;
-width: 113.48px;
-height: 17.91px;
-left: 1112.13px;
-top: 236.95px;
-color: #25396F;
+    position: absolute;
+    width: 113.48px;
+    height: 17.91px;
+    left: 1112.13px;
+    top: 236.95px;
+    color: #25396F;
 }
 .message-tag{
     position: absolute;
-width: 81.55px;
-height: 18.48px;
-left: 1102.13px;
-top: 170.95px;
-color: #A974FF;
+    width: 81.55px;
+    height: 18.48px;
+    left: 1102.13px;
+    top: 170.95px;
+    color: #A974FF;
 }
 .message-icon-2{
     position: absolute;
