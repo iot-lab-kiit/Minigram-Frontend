@@ -1,0 +1,83 @@
+.message{
+    position: absolute;
+    width: 81.55px;
+    height: 18.48px;
+    left: 1102.13px;
+    top: 170.95px;
+    
+    color: #A974FF;
+}
+
+.message_icon_1{
+    position: absolute;
+    width: 46px;
+    height: 46.89px;
+    left: 1054.13px;
+    top: 222.95px;
+
+}
+.message_name_1{
+    position: absolute;
+    width: 113.48px;
+    height: 17.91px;
+    left: 1112.13px;
+    top: 236.95px;
+    color: #25396F;
+}
+.message_tag{
+    position: absolute;
+    width: 81.55px;
+    height: 18.48px;
+    left: 1102.13px;
+    top: 170.95px;
+    color: #A974FF;
+}
+.message_icon_2{
+    position: absolute;
+    width: 46px;
+    height: 46.89px;
+    left: 1054.13px;
+    top: 302.95px;
+}
+.message_name_2{
+    position: absolute;
+    width: 113.48px;
+    height: 17.91px;
+    left: 1109.13px;
+    top: 311.95px;
+    
+    color: #25396F;
+}
+.message_icon_3{
+    position: absolute;
+    width: 46px;
+    height: 46.89px;
+    left: 1054.13px;
+    top: 382.95px;
+    
+}
+.message_name_3{
+    position: absolute;
+    width: 113.48px;
+    height: 17.91px;
+    left: 1112.5px;
+    top: 399.09px;
+    
+    color: #25396F;
+}
+.message_icon_4{
+    position: absolute;
+    width: 46px;
+    height: 46.89px;
+    left: 1054.13px;
+    top: 462.95px;
+    
+}
+.message_name_4{
+    position: absolute;
+    width: 113.48px;
+    height: 17.91px;
+    left: 1112.5px;
+    top: 479.09px;
+    color: #25396F;
+}

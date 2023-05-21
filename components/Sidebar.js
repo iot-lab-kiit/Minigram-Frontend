@@ -7,52 +7,64 @@ import TextsmsOutlinedIcon from '@mui/icons-material/TextsmsOutlined';
 import Avatar from '@mui/material/Avatar';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import Link from 'next/link';
+import styles from '../styles/Sidebar.module.css';
 export const Sidebar = () => {
   return (
-    <div>
-    <div className='menu'>
-   <div className='menu-link'> Menu</div>
-    </div>
-      <div className='side-contain'>
-      <Link href='/home'>
-     <div className='home-icon'><HomeIcon/></div> 
-     <div  className='home-link'>Home</div> 
-     </Link>
+    // <>
+    //   <div className={styles.menuContainer}>
+    //     <div className={styles.menuLink}> Menu</div>
+    //     <Link href='/home'>
+    //       <div className='side-contain'>
+    //         <div className={styles.Icon}><HomeIcon /></div>
+    //         <div className={styles.Link}>Home</div>
+    //       </div>
+    //     </Link>
+    //   </div>
+    // </>
+      <div>
+      <div className={styles.menu}>
+     <div className={styles.menuLink}> Menu</div>
       </div>
-    
-    <div  className='side-contain'>
-    <Link href='/search'>
-    <div className='search-icon'><SearchIcon/></div>
-     <div className='search-link'> Search</div>
-     </Link>
-      </div>
-    
-    <div className='side-contain'>
-    <Link href='/explore'>
-    <div className='explore-icon'><ExploreOutlinedIcon/></div> 
-   <div className='explore-link'>Explore</div>
-   </Link>
-      </div>
-    
-    <div className='side-contain'>
-    <div className='message-icon'><TextsmsOutlinedIcon/></div> 
-   <div className='message-link'>Message</div>
-      </div>
-    
-    <div className='side-contain'>
-    <Link href='profile'>
-    <div className='profile-icon'><AccountCircleOutlinedIcon/></div> 
-   <div className='profile-link'>Profile</div>
-   </Link>
-   
+        <div className='side-contain'>
+        <Link href='/home'>
+       <div className={styles.homeIcon}><HomeIcon/></div> 
+       <div  className={styles.homeLink}>Home</div> 
+       </Link>
+        </div>
 
-    <div className='side-contain'>
-    <div className='account-avatar'>
-    <Avatar alt="Remy Sharp" src="https://m.media-amazon.com/images/M/MV5BMTA2OTU0MjEwMDVeQTJeQWpwZ15BbWU4MDIzNjU1MTAx._V1_.jpg" ></Avatar> </div>
-    <div className='account-link'>Account</div>
-    <div className='account-icon'><ArrowDropDownIcon/></div> 
-    </div>
-    </div>
-    </div>
+      <div  className='side-contain'>
+      <Link href='/search'>
+      <div className={styles.searchIcon}><SearchIcon/></div>
+       <div className={styles.searchLink}> Search</div>
+       </Link>
+        </div>
+
+      <div className='side-contain'>
+      <Link href='/explore'>
+      <div className={styles.exploreIcon}><ExploreOutlinedIcon/></div> 
+     <div className={styles.exploreLink}>Explore</div>
+     </Link>
+        </div>
+
+      <div className='side-contain'>
+      <div className={styles.messageIcon}><TextsmsOutlinedIcon/></div> 
+     <div className={styles.messageLink}>Message</div>
+        </div>
+
+      <div className='side-contain'>
+      <Link href='profile'>
+      <div className={styles.profileIcon}><AccountCircleOutlinedIcon/></div> 
+     <div className={styles.profileLink}>Profile</div>
+     </Link>
+
+
+      <div className={styles.sideContain}>
+      <div className='account-avatar'>
+      <Avatar alt="Remy Sharp" src="https://m.media-amazon.com/images/M/MV5BMTA2OTU0MjEwMDVeQTJeQWpwZ15BbWU4MDIzNjU1MTAx._V1_.jpg" ></Avatar> </div>
+      <div className='account-link'>Account</div>
+      <div className='account-icon'><ArrowDropDownIcon/></div> 
+      </div>
+      </div>
+      </div>
   )
-  }
+}

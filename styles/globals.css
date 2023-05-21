@@ -33,90 +33,11 @@
   overflow: hidden;
   white-space: nowrap;
 }
-.home-icon{
-    position: absolute;
-left: 79.19px;
-right: 91.94%;
-top:90px;
-bottom: 96.5%;
-color:  #A974FF;
-}
 
-.search-icon{
-    position: absolute;
-left: 6.11%;
-right: 91.94%;
-top: 135px;
-bottom: 94.97%;
-color: #A974FF;
-}
-.menu-link{
-    position: absolute;
-width: 200px;
-height: 200px;
-left: 79.19px;
-top: 36px;
-color: #25396F;
-}
-.home-link{
-    position: absolute;
-    width: 40px;
-    height: 10px;
-    left: 115.19px;
-    top: 90px;
-    color: #000000;
-}
-.search-link{
-    position: absolute;
-width: 47px;
-height: 11px;
-left: 115.19px;
-top: 135px;
-
-color: #000000;
-}
-.explore-icon{
-    position: absolute;
-left: 6.11%;
-right: 91.94%;
-top: 180px;
-bottom: 94.97%;
-color: #A974FF;
-}
-.explore-link{
-    position: absolute;
-width: 51px;
-height: 13px;
-left: 115.19px;
-top: 180px;
-color: #000000;
-}
-.message-link{
-    position: absolute;
-width: 62px;
-height: 13px;
-left: 115.19px;
-top: 224px;
-color: #000000;
-}
-.message-icon{
-    position: absolute;
-    left: 79.19px;
-    right: 91.94%;
-    top: 224px;
-    bottom: 96.5%;
-}
 
 .padding-container{
     padding: 2rem;
     color:  #A974FF;
-}
-.profile-link{
-    position: absolute;
-    width: 43px;
-    height: 11px;
-    left: 115.19px;
-    top: 272px;
 }
 
 
@@ -149,15 +70,7 @@ color: #000000;
   gap: 12px;
   color: #000000;
 }
-.profile-icon{
-    position: absolute;
-    left: 79.19px;
-    right: 91.94%;
-    top: 272px;
-    bottom: 96.5%;
-    
-    color:  #A974FF;
-}
+
 .message{
     position: absolute;
     width: 81.55px;
@@ -167,9 +80,7 @@ color: #000000;
     
     color: #A974FF;
 }
-.side-contain{
-    cursor: pointer;
-}
+
 .message-icon-1{
     position: absolute;
     width: 46px;
