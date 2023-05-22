@@ -1,110 +1,22 @@
 .menuContainer{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    width: 18%;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: white;
+    padding: 20px 0px;
+}
+.heading{
+    font-size: 22px;
+    color: #000000;
+    margin: 14px 0px;
+}
+.Links{
     width: 100%;
 }
-.homeIcon {
-    position: absolute;
-    left: 6.11%;
-    right: 91.94%;
-    top: 85px;
-    bottom: 94.97%;
+.Icon {
     color: #A974FF;
-    color: #A974FF;
-}
-
-.searchIcon {
-    position: absolute;
-    left: 6.11%;
-    right: 91.94%;
-    top: 135px;
-    bottom: 94.97%;
-    color: #A974FF;
-}
-
-.menuLink {
-    color: #25396F;
-    position: absolute;
-    width: 47px;
-    height: 11px;
-    left: 115.19px;
-    top: 45px;
-
-    color: #000000;
-}
-
-.homeLink {
-    position: absolute;
-    width: 47px;
-    height: 11px;
-    left: 115.19px;
-    top: 85px;
-
-    color: #000000;
-    
-}
-
-.searchLink {
-    position: absolute;
-    width: 47px;
-    height: 11px;
-    left: 115.19px;
-    top: 135px;
-
-    color: #000000;
-}
-
-.exploreIcon {
-    position: absolute;
-    left: 6.11%;
-    right: 91.94%;
-    top: 180px;
-    bottom: 94.97%;
-    color: #A974FF;
-}
-
-.exploreLink {
-    position: absolute;
-    width: 51px;
-    height: 13px;
-    left: 115.19px;
-    top: 180px;
-    color: #000000;
-}
-
-.messageLink {
-    position: absolute;
-    width: 62px;
-    height: 13px;
-    left: 115.19px;
-    top: 224px;
-    color: #000000;
-}
-
-.messageIcon {
-    position: absolute;
-    left: 79.19px;
-    right: 91.94%;
-    top: 224px;
-    bottom: 96.5%;
-    color: #A974FF;
-}
-.profileLink{
-    position: absolute;
-    width: 43px;
-    height: 11px;
-    left: 115.19px;
-    top: 272px;
-}
-.profileIcon{
-    position: absolute;
-    left: 79.19px;
-    right: 91.94%;
-    top: 272px;
-    bottom: 96.5%;
-    
-    color:  #A974FF;
 }
 .sideContain{
     cursor: pointer;
@@ -112,8 +24,17 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    width: 500px;
-    background-color: green;
     gap: 16px;
     text-decoration: none;
+    width: 100%;
+    height: 50px;
+    padding: 18px 16px;
+    box-sizing: border-box;
+}
+.sideContain:hover{
+    background-color: rgb(199, 202, 199);
+}
+.Link {
+    text-decoration: none !important;
+    color: #000000;
 }
