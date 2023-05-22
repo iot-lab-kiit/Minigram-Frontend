@@ -1,0 +1,84 @@
+.cardsContainer{
+
+    width: 60%;
+    padding: 20px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: fit-content;
+}
+
+.Card{
+    background-color: white;
+    width: 100%;
+    max-width: 380px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin: 10px;
+}
+.header {
+    display: flex;
+    flex-direction: row;
+    padding: 10px 10px 16px 10px;
+    align-items: center;
+}
+.name{
+    font-size: 16px;
+    font-weight: 550;
+    white-space: nowrap;
+    padding: 0px 4px 0px 16px
+}
+.time {
+    font-size: 10px;
+}
+.post {
+    max-height: 250px;
+    height: 100%;
+    object-fit: cover;
+}
+
+.flexContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+}
+.iconContainer {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 6px 0px;
+}
+.icon {
+    color: rgb(51, 50, 50);
+    font-size: 20px;
+}
+.nameInfo{
+    font-weight: 550;
+    margin: 2px 0px;
+    font-size: 14px;
+}
+
+.footerContainer {
+    display: flex;
+    flex-direction: column;
+}
+.likesComments{
+    font-size: 11px;
+    color:rgb(80, 79, 79);
+}
+.likesComments:hover{
+    color: #A974FF;
+    cursor: pointer;
+}
+.addComments{
+    margin: 12px 0px;
+    border:rgb(51, 50, 50);
+    outline: none;
+}
+.caption{
+    font-size: 14px;
+}
+
