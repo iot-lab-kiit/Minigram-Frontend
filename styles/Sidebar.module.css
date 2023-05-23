@@ -6,6 +6,10 @@
     align-items: center;
     background-color: white;
     padding: 20px 0px;
+    position: fixed;
+    height: 100vh;
+    top:0;
+    left: 0;
 }
 .heading{
     font-size: 22px;
@@ -17,6 +21,7 @@
 }
 .Icon {
     color: #A974FF;
+    font-size: 22px;
 }
 .sideContain{
     cursor: pointer;
@@ -34,7 +39,8 @@
 .sideContain:hover{
     background-color: rgb(199, 202, 199);
 }
-.Link {
+.Link{
     text-decoration: none !important;
-    color: #000000;
+    color: black;
+    font-size: 14px;
 }
