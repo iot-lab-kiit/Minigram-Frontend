@@ -21,6 +21,7 @@
 }
 .Icon {
     color: #A974FF;
+    font-size: 22px;
 }
 .sideContain{
     cursor: pointer;
@@ -41,4 +42,5 @@
 .Link{
     text-decoration: none !important;
     color: black;
+    font-size: 14px;
 }
