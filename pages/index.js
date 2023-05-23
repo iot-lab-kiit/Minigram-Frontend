@@ -10,10 +10,11 @@ import styles from '../styles/Home.module.css';
 export default function index() {
   const [darkMode, setDarkMode] = useState(true);
   return (
-      // <SignIn />
-      <SignUp />
-
-
+        <div className={styles.homeContainer}>
+          <Sidebar/>
+          <Cards/>
+          <Messages/>
+        </div>
   )
 }
 

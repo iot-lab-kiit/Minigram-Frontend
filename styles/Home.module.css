@@ -1,7 +1,7 @@
-/* .homeContainer{
+.homeContainer{
   display: flex;
   justify-content: flex-start;
   background-color: rgb(243, 243, 243);
   height: 100vh;
   overflow-y: scroll;
-} */
+}

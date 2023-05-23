@@ -34,7 +34,7 @@
 .sideContain:hover{
     background-color: rgb(199, 202, 199);
 }
-.Link {
+.Link{
     text-decoration: none !important;
-    color: #000000;
+    color: black;
 }
