@@ -1,0 +1,116 @@
+.pfp img {
+  border-radius: 100px;
+  position: relative;
+  margin-left: 20px;
+  top: 20vh;
+  height: 20rem;
+  width: 20rem;
+  border: 3px solid #a974ff;
+  /* border:3px solid #8b498c; */
+  /* border-image-source:  linear-gradient(to left,#ffffff,#8b498c); */
+  padding: 6px;
+}
+
+.head {
+  display: flex;
+  position: relative;
+  left: 250px;
+  justify-content: space-between;
+  width: 50vw;
+  /* height: 60vh; */
+}
+
+.bio p {
+  font-size: 2.5rem;
+  padding: 0;
+  margin: 0;
+}
+
+.pfp {
+  width: 30%;
+  object-fit: cover;
+}
+.bio {
+  width: 80rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 20vh;
+  left: 20rem;
+}
+
+.edit,
+.data {
+  display: flex;
+  align-items: center;
+}
+
+.editb {
+  background-color: #a974ff;
+  color: white;
+  padding: 0 30px 0 30px;
+  height: 4rem;
+  border: transparent;
+  font-size: 1.5rem;
+  border-radius: 18px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.posts,
+.conex {
+  margin-right: 20px;
+  font-size: 1.6rem;
+  display: flex;
+  align-content: center;
+}
+
+.data {
+  margin-top: 20px;
+}
+
+.bo {
+  font-weight: bolder;
+  font-size: 1.4rem;
+  margin-right: 8px;
+  margin-bottom: 0;
+}
+
+.grid {
+  position: relative;
+  left: 250px;
+  width: 72%;
+  top: 220px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 50px;
+}
+
+.caption {
+  font-size: 1.6rem;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+.links a,
+.links {
+  color: #a974ff;
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-top: 20px;
+  text-decoration: none;
+}
+
+.posts,
+.conex,
+.editb:hover {
+  cursor: pointer;
+}
+
+.photo img:hover {
+  transform: scale(1.03);
+}
+
+.photo img {
+  transition: transform 0.2s;
+}
