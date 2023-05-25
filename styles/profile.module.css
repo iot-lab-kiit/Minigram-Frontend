@@ -1,7 +1,7 @@
 .pfp img {
   border-radius: 100px;
   position: relative;
-
+  margin-left: 20px;
   top: 20vh;
   height: 20rem;
   width: 20rem;
@@ -14,10 +14,10 @@
 .head {
   display: flex;
   position: relative;
-  left: 23vw;
+  left: 250px;
   justify-content: space-between;
-  width: 70vw;
-  height: 60vh;
+  width: 50vw;
+  /* height: 60vh; */
 }
 
 .bio p {
@@ -28,13 +28,15 @@
 
 .pfp {
   width: 30%;
+  object-fit: cover;
 }
 .bio {
-  width: 80%;
+  width: 80rem;
   display: flex;
   flex-direction: column;
   position: relative;
   top: 20vh;
+  left: 20rem;
 }
 
 .edit,
@@ -76,8 +78,9 @@
 
 .grid {
   position: relative;
-  left: 23vw;
+  left: 250px;
   width: 72%;
+  top: 220px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 50px;
@@ -89,10 +92,25 @@
   margin-top: 20px;
 }
 
-.links a,.links {
+.links a,
+.links {
   color: #a974ff;
   font-size: 1.4rem;
   font-weight: bold;
   margin-top: 20px;
   text-decoration: none;
+}
+
+.posts,
+.conex,
+.editb:hover {
+  cursor: pointer;
+}
+
+.photo img:hover {
+  transform: scale(1.03);
+}
+
+.photo img {
+  transition: transform 0.2s;
 }
