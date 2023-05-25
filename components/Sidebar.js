@@ -1,14 +1,23 @@
-import React from 'react'
+import React ,{ useState }from 'react'
 import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
 import ExploreOutlinedIcon from '@mui/icons-material/ExploreOutlined';
-import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import TextsmsOutlinedIcon from '@mui/icons-material/TextsmsOutlined';
 import Avatar from '@mui/material/Avatar';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import Link from 'next/link';
 import styles from '../styles/Sidebar.module.css';
 export const Sidebar = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  }
   return (
       <div className={styles.menuContainer}>
         <div className={styles.heading}> Menu</div>
@@ -43,8 +52,22 @@ export const Sidebar = () => {
             <div className={styles.Link}>Profile</div>
           </div>
         </Link>
+        <div >
+        <div className={styles.Account}>
+      {isLoggedIn ? (
+        <div>
+        <Avatar src='https://newprofilepic2.photo-cdn.net//assets/images/article/profile.jpg' className={styles.Avatar}></Avatar>
+          <button onClick={handleLogout} className={styles.Logout}>Logout</button>
         </div>
-        
+      ) : (
+        <div>
+          <AccountCircleOutlinedIcon  className={styles.userbutton}/>
+          <button onClick={handleLogin} className={styles.Login}>Login</button>
+        </div>
+      )}
+    </div>
+        </div>
+        </div>   
       </div>
   )
 }
