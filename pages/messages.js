@@ -1,6 +1,6 @@
 import React from "react";
 import { Sidebar } from '../components/Sidebar.js'
-import styles from '../styles/Messages.module.css';
+import styles from '../styles/MessagesPage.module.css';
 import Avatar from '@mui/material/Avatar';
 import { useEffect, useState } from "react";
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
