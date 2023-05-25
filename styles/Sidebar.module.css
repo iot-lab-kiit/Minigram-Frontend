@@ -109,13 +109,10 @@
         align-items: center;
         justify-content: space-evenly;
         position: fixed !important;
-        top:95vh;
-        position: absolute;
+        top: 94vh;
+
       }
     .Link{
-        text-decoration: none !important;
-        color: black;
-        font-size: 11px;
         display: none;
     }
     .heading{
@@ -128,12 +125,23 @@
         width: 100%;
         display: flex;
         align-items: center;
-        flex-grow: 1;
         min-width: 50px;
         flex-direction: row;
-        white-space: nowrap;
         justify-content: center;
         gap: 5px;
+        height: 100px;
+    }
+    .sideContain{
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        width: 100%;
+        height: 80px;
+        padding: 0px 16px 6px 16px;
+        box-sizing: border-box;
     }
 }
 .userbutton{

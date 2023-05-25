@@ -1,4 +1,4 @@
-.messageContainer{
+.messageContainer {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -11,25 +11,29 @@
     top:0;
     height: 100%;
 }
-.messages{
+
+.messages {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     width: 100%;
     flex-wrap: wrap;
 }
-.heading{
+
+.heading {
     color: #aa75ff;
     font-weight: 550;
     font-size: 20px;
-    text-align:center;
+    text-align: center;
     width: 100%;
     margin-bottom: 20px;
 }
-.message_name{
-flex-wrap: wrap;
+
+.message_name {
+    flex-wrap: wrap;
 }
-.message{   
+
+.message {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -40,32 +44,38 @@ flex-wrap: wrap;
     flex-wrap: wrap;
     font-weight: 400;
 }
-.message:hover{
+
+.message:hover {
     background-color: rgb(199, 202, 199);
 }
-.msg_id{
+
+.msg_id {
     font-size: 12px;
     opacity: 0.5;
     cursor: pointer;
 }
-.Icon{
+
+.Icon {
     width: 36px;
     height: 36px;
 }
-.Name{
+
+.Name {
     font-size: 16px;
 }
-.AddCircleIcon{
+
+.AddCircleIcon {
     width: 36px;
     height: 36px;
     opacity: 0.5;
     cursor: pointer;
 }
-.AddCircleIcon:hover{
+
+.AddCircleIcon:hover {
     background-color: rgb(199, 202, 199);
 }
 
-.recent_text{
+.recent_text {
     font-weight: 550;
     font-size: 17px;
     display: flex;
@@ -76,22 +86,25 @@ flex-wrap: wrap;
     padding: 2px;
     color: #aa75ff;
 }
-.search_text{
-opacity: 0.5;
-font-size: 17px;
-font-weight: 300;
-display: flex;
-justify-content: left;
-margin-bottom: 15px;
-padding-left: 20px;
+
+.search_text {
+    opacity: 0.5;
+    font-size: 17px;
+    font-weight: 300;
+    display: flex;
+    justify-content: left;
+    margin-bottom: 15px;
+    padding-left: 20px;
 }
-.tag{
+
+.tag {
     font-weight: bold;
     justify-self: left;
     font-size: 15px;
     align-items: left;
     color: #aa75ff;
 }
+
 .img_tag{
    padding: 20px;
    border-radius: 30px;
@@ -128,6 +141,39 @@ padding-left: 20px;
         width: 30px;
         height: 30px;
     }
+    .AddCircleIcon{
+        width: 30px;
+        height: 30px;
+        opacity: 0.5;
+        cursor: pointer;
+    }
+    .recent_text{
+        font-weight: 550;
+        font-size: 15px;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        align-items: center;
+        margin-top: 5px;
+        padding: 2px;
+        color: #aa75ff;
+    }
+    .search_text{
+        opacity: 0.5;
+        font-size: 15px;
+        font-weight: 300;
+        display: flex;
+        justify-content: left;
+        margin-bottom: 15px;
+        padding-left: 20px;
+    }
+    .tag{
+        font-weight: bold;
+        justify-self: left;
+        font-size: 14px;
+        align-items: left;
+        color: #aa75ff;
+    }
 }
 
 @media screen and (max-width:908px) {
@@ -160,6 +206,32 @@ padding-left: 20px;
         width: 27px;
         height: 27px;
     }
+    .AddCircleIcon{
+        width: 27px;
+        height: 27px;
+        opacity: 0.5;
+        cursor: pointer;
+    }
+    .recent_text{
+        font-weight: 550;
+        font-size: 14px;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        align-items: center;
+        margin-top: 5px;
+        padding: 2px;
+        color: #aa75ff;
+    }
+    .search_text{
+        opacity: 0.5;
+        font-size: 14px;
+        font-weight: 300;
+        display: flex;
+        justify-content: left;
+        margin-bottom: 15px;
+        padding-left: 20px;
+    }
 }
 @media screen and (max-width:412px) {
     
@@ -187,4 +259,3 @@ padding-left: 20px;
         display: none;
     }
 }
-
