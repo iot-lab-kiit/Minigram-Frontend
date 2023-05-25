@@ -12,7 +12,7 @@
 
 .msg_view {
     order: 1;
-    width: 55.5%;
+    width: 57.5%;
     background-color: aliceblue;
     height: 100vh;
     display: flex;
@@ -20,7 +20,7 @@
 
 .msg_pannel {
     order: 2;
-    width: 26.5%;
+    width: 24.5%;
     background-color: aliceblue;
     height: 100vh;
     display: flex;
@@ -29,7 +29,8 @@
 .pannel {
     width: 100%;
     background-color: aliceblue;
-    height: 100vh;
+    height: 80vh;
+    margin-top: 5rem;
 }
 
 .msg_rotate {
@@ -41,7 +42,7 @@
 
 
 .msgv_align {
-    padding-top: 30%;
+    padding-top: 25%;
     text-align: center;
 }
 
@@ -53,16 +54,15 @@
 }
 
 .msgp_notif {
-    margin-top: 2.4rem;
     cursor: pointer;
     overflow-y: scroll;
     scroll-behavior: smooth;
-    height: 77vh;
+    height: 42rem;
 }
 
 .msgp_messages {
     align-self: flex-end;
-    font-size: 2.4rem;
+    font-size: 2rem;
     color: #aa75ff;
     margin-left: 1rem;
 }
@@ -116,10 +116,10 @@
 }
 
 .msgp_addBtn {
-    /* margin-top: 3rem; */
-    font-size: 3rem;
+    margin-top: 3rem;
+    font-size: 3.5rem;
     color: brown;
-    margin-left: 60%;
+    margin-left: 50%;
     cursor: pointer;
     align-self: flex-end;
 }
@@ -210,6 +210,6 @@
     background-color: navajowhite;
 }
 
-.chatBtn:hover{
+.chatBtn:hover {
     background-color: moccasin;
 }
