@@ -136,3 +136,51 @@
         gap: 5px;
     }
 }
+.userbutton{
+    width: 60px;
+    height: 60px;
+    padding-left: 15px;
+}
+.Login{
+    cursor: pointer;
+    border: 0;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 12px;
+    margin: 0 10px;
+    width: 100px;
+    padding: 10px 0;
+    box-shadow: 0 0 20px rgba(104, 85, 224, 0.2);
+    transition: 0.4s;
+}
+.Login:hover{
+    background-color: #A974FF;
+}
+.Avatar{
+    width: 60px;
+    height: 60px;
+    padding-left: 15px;
+}
+.Logout{
+    cursor: pointer;
+    border: 0;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 12px;
+    margin: 0 10px;
+    width: 100px;
+    padding: 10px 0;
+    box-shadow: 0 0 20px rgba(104, 85, 224, 0.2);
+    transition: 0.4s;
+    background-color: #A974FF;
+}
+.Logout:hover{
+    background-color: white;
+}
+.Account{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
