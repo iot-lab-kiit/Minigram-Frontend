@@ -22,7 +22,7 @@ export const Sidebar = () => {
       <div className={styles.menuContainer}>
         <div className={styles.heading}> Menu</div>
         <div className={styles.Links}>
-        <Link href='/home' style={{textDecoration: "none"}}>
+        <Link href='/' style={{textDecoration: "none"}}>
           <div className={styles.sideContain}>
             <div ><HomeIcon className={styles.Icon}/></div>
             <div className={styles.Link}>Home</div>
