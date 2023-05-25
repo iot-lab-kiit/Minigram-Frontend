@@ -36,7 +36,11 @@
     box-sizing: border-box;
 }
 .sideContain:hover{
-    background-color: rgb(199, 202, 199);
+    background-color: rgb(69, 67, 67);
+    justify-content: flex-end;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    
 }
 .Link{
     text-decoration: none !important;
