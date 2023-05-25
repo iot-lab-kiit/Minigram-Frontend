@@ -1,4 +1,4 @@
-.messageContainer{
+.messageContainer {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -8,28 +8,32 @@
     background-color: white;
     position: fixed;
     right: 0;
-    top:0;
+    top: 0;
     height: 100vh;
 }
-.messages{
+
+.messages {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     width: 100%;
     flex-wrap: wrap;
 }
-.heading{
+
+.heading {
     color: #aa75ff;
     font-weight: 550;
     font-size: 20px;
-    text-align:center;
+    text-align: center;
     width: 100%;
     margin-bottom: 20px;
 }
-.message_name{
-flex-wrap: wrap;
+
+.message_name {
+    flex-wrap: wrap;
 }
-.message{   
+
+.message {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -40,32 +44,38 @@ flex-wrap: wrap;
     flex-wrap: wrap;
     font-weight: 400;
 }
-.message:hover{
+
+.message:hover {
     background-color: rgb(199, 202, 199);
 }
-.msg_id{
+
+.msg_id {
     font-size: 12px;
     opacity: 0.5;
     cursor: pointer;
 }
-.Icon{
+
+.Icon {
     width: 36px;
     height: 36px;
 }
-.Name{
+
+.Name {
     font-size: 16px;
 }
-.AddCircleIcon{
+
+.AddCircleIcon {
     width: 36px;
     height: 36px;
     opacity: 0.5;
     cursor: pointer;
 }
-.AddCircleIcon:hover{
+
+.AddCircleIcon:hover {
     background-color: rgb(199, 202, 199);
 }
 
-.recent_text{
+.recent_text {
     font-weight: 550;
     font-size: 17px;
     display: flex;
@@ -76,23 +86,143 @@ flex-wrap: wrap;
     padding: 2px;
     color: #aa75ff;
 }
-.search_text{
-opacity: 0.5;
-font-size: 17px;
-font-weight: 300;
-display: flex;
-justify-content: left;
-margin-bottom: 15px;
-padding-left: 20px;
+
+.search_text {
+    opacity: 0.5;
+    font-size: 17px;
+    font-weight: 300;
+    display: flex;
+    justify-content: left;
+    margin-bottom: 15px;
+    padding-left: 20px;
 }
-.tag{
+
+.tag {
     font-weight: bold;
     justify-self: left;
     font-size: 15px;
     align-items: left;
     color: #aa75ff;
 }
-.img_tag{
-   padding: 20px;
-   border-radius: 30px;
+
+.img_tag {
+    padding: 20px;
+    border-radius: 30px;
+}
+
+/*************       Below is CSS for messages page            ****************/
+
+.msg_body {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+.msg_sbar {
+    order: 0;
+    width: 18%;
+    height: 100vh;
+}
+
+.msg_pannel {
+    order: 1;
+    width: 27.5%;
+    background-color: aliceblue;
+    height: 100vh;
+}
+
+.msg_view {
+    order: 2;
+    width: 54.5%;
+    background-color: aliceblue;
+    height: 100vh;
+}
+
+.msgv_align {
+    padding-top: 30%;
+    text-align: center;
+}
+
+
+.msgp_heading {
+    margin-top: 3rem;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.msgp_notif {
+    margin-top: 2.4rem;
+    cursor: pointer;
+    overflow-y: scroll;
+    height: 77vh;
+}
+
+.msgp_messages {
+    align-self: flex-end;
+    font-size: 2.4rem;
+    color: #aa75ff;
+    margin-left: 1rem;
+}
+
+.msgp_Icon {
+    width: 5.5rem;
+    height: 5.5rem;
+}
+
+.msgp_Name {
+    font-size: 2.5rem;
+}
+
+.msgp_para {
+    margin-top: 1%;
+    font-size: 2.1rem;
+    margin-bottom: 2%;
+}
+
+.msgv_button {
+    border: none;
+    color: cornsilk;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 2rem;
+    cursor: pointer;
+    border-radius: 3rem;
+    background-color: coral;
+}
+
+.msgv_button:hover {
+    background-color: chocolate;
+}
+
+.msg_rotate {
+    height: .2rem;
+    width: 199vh;
+    margin-left: -75.5rem;
+    background-color: gainsboro;
+    transform: rotate(90deg);
+}
+
+.msgv_icn {
+    height: 8rem;
+    width: 10rem;
+    margin-bottom: 2%;
+}
+
+.msgp_add {
+    display: flex;
+    flex-wrap: wrap;
+    height: 7.8rem;
+}
+
+.msgp_addBtn {
+    /* margin-top: 3rem; */
+    font-size: 3rem;
+    color: brown;
+    margin-left: 60%;
+    cursor: pointer;
+    align-self: flex-end;
+}
+
+.msgp_addBtn:hover {
+    color: green;
 }
