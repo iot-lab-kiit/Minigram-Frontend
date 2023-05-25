@@ -1,19 +1,12 @@
 import React, { useState } from 'react';
-import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
-import CardHeader, { cardHeaderClasses } from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
 import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import TextsmsIcon from '@mui/icons-material/Textsms';
 import SendSharpIcon from '@mui/icons-material/SendSharp';
 import styles from '../styles/Cards.module.css'
@@ -27,7 +20,7 @@ export const Cards = (req, res) => {
       {numbers.map(()=>(
       <Card className={styles.Card}>
         <div className={styles.header}>
-          <Avatar aria-label="recipe" sx={{ width: "40px" }} src="http://t3.gstatic.com/licensed-image?q=tbn:ANd9GcRiII9371KsNrl7NJMJiH1MSBljoseqOwOyce6SHU1D63HY3ay0gowModGJ4DeZ6ZlORYbDeFMI7oKkQGA" />
+          <Avatar className={styles.avatar} aria-label="recipe" src="http://t3.gstatic.com/licensed-image?q=tbn:ANd9GcRiII9371KsNrl7NJMJiH1MSBljoseqOwOyce6SHU1D63HY3ay0gowModGJ4DeZ6ZlORYbDeFMI7oKkQGA" />
           <Typography className={styles.name} component="p">Mahendra Singh Dhoni</Typography>
           <Typography className={styles.time} component="p">23min</Typography>
         </div>
@@ -51,6 +44,7 @@ export const Cards = (req, res) => {
            </div>
            <Typography className={styles.likesComments}>view all 86 comments</Typography>
            <input type="text" placeholder="Add Comments..." className={styles.addComments}/>
+           <IconButton aria-label='add comment'><ArrowOutwardIcon className={styles.icon}/></IconButton>
          </div>
       </Card>
       ))}
