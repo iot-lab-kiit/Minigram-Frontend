@@ -145,9 +145,9 @@
     }
 }
 .userbutton{
-    width: 60px;
-    height: 60px;
-    padding-left: 15px;
+    width:40px;
+    height:40px;
+    
 }
 .Login{
     cursor: pointer;
@@ -156,7 +156,7 @@
     font-weight: 500;
     font-size: 12px;
     margin: 0 10px;
-    width: 100px;
+    width: 50px;
     padding: 10px 0;
     box-shadow: 0 0 20px rgba(104, 85, 224, 0.2);
     transition: 0.4s;
@@ -176,7 +176,7 @@
     font-weight: 500;
     font-size: 12px;
     margin: 0 10px;
-    width: 100px;
+    width: 50px;
     padding: 10px 0;
     box-shadow: 0 0 20px rgba(104, 85, 224, 0.2);
     transition: 0.4s;
@@ -185,10 +185,11 @@
 .Logout:hover{
     background-color: white;
 }
-.Account{
+
+.AccountButton{
     display: flex;
-    flex-direction: row;
+    flex-direction:row;
     justify-content: flex-start;
     align-items: center;
-    flex-wrap: wrap;
+    width: 100%;
 }
