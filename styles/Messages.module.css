@@ -128,6 +128,39 @@ padding-left: 20px;
         width: 30px;
         height: 30px;
     }
+    .AddCircleIcon{
+        width: 30px;
+        height: 30px;
+        opacity: 0.5;
+        cursor: pointer;
+    }
+    .recent_text{
+        font-weight: 550;
+        font-size: 15px;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        align-items: center;
+        margin-top: 5px;
+        padding: 2px;
+        color: #aa75ff;
+    }
+    .search_text{
+        opacity: 0.5;
+        font-size: 15px;
+        font-weight: 300;
+        display: flex;
+        justify-content: left;
+        margin-bottom: 15px;
+        padding-left: 20px;
+    }
+    .tag{
+        font-weight: bold;
+        justify-self: left;
+        font-size: 14px;
+        align-items: left;
+        color: #aa75ff;
+    }
 }
 
 @media screen and (max-width:908px) {
@@ -159,6 +192,32 @@ padding-left: 20px;
     .Icon{
         width: 27px;
         height: 27px;
+    }
+    .AddCircleIcon{
+        width: 27px;
+        height: 27px;
+        opacity: 0.5;
+        cursor: pointer;
+    }
+    .recent_text{
+        font-weight: 550;
+        font-size: 14px;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        align-items: center;
+        margin-top: 5px;
+        padding: 2px;
+        color: #aa75ff;
+    }
+    .search_text{
+        opacity: 0.5;
+        font-size: 14px;
+        font-weight: 300;
+        display: flex;
+        justify-content: left;
+        margin-bottom: 15px;
+        padding-left: 20px;
     }
 }
 @media screen and (max-width:412px) {
