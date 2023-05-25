@@ -6,6 +6,7 @@ import { Messages } from '../components/Messages.js'
 import  SignIn from "../components/SignIn"
 import SignUp from '../components/SignUp';
 import styles from '../styles/Home.module.css';
+import { Sign } from 'crypto';
 
 export default function index() {
   const [darkMode, setDarkMode] = useState(true);
@@ -14,6 +15,7 @@ export default function index() {
           <Sidebar/>
           <Cards/>
           <Messages/>
+          {/* <SignIn /> */}
         </div>
   )
 }
