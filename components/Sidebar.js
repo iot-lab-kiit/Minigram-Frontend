@@ -53,14 +53,14 @@ export const Sidebar = () => {
           </div>
         </Link>
         <div >
-        <div className={styles.Account}>
-      {isLoggedIn ? (
         <div>
-        <Avatar src='https://newprofilepic2.photo-cdn.net//assets/images/article/profile.jpg' className={styles.Avatar}></Avatar>
+      {isLoggedIn ? (
+        <div className={styles.Accountbutton}>
+        <Avatar src='https://newprofilepic2.photo-cdn.net//assets/images/article/profile.jpg' className={styles.userbutton}></Avatar>
           <button onClick={handleLogout} className={styles.Logout}>Logout</button>
         </div>
       ) : (
-        <div>
+        <div className={styles.Accountbutton}>
           <AccountCircleOutlinedIcon  className={styles.userbutton}/>
           <button onClick={handleLogin} className={styles.Login}>Login</button>
         </div>
