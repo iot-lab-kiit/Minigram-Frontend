@@ -10,19 +10,35 @@
     height: 100vh;
 }
 
-.msg_pannel {
+.msg_view {
     order: 1;
-    width: 27.5%;
+    width: 55.5%;
+    background-color: aliceblue;
+    height: 100vh;
+    display: flex;
+}
+
+.msg_pannel {
+    order: 2;
+    width: 26.5%;
+    background-color: aliceblue;
+    height: 100vh;
+    display: flex;
+}
+
+.pannel {
+    width: 100%;
     background-color: aliceblue;
     height: 100vh;
 }
 
-.msg_view {
-    order: 2;
-    width: 54.5%;
-    background-color: aliceblue;
+.msg_rotate {
     height: 100vh;
+    width: .2rem;
+    background-color: gainsboro;
+    /* background-color: black; */
 }
+
 
 .msgv_align {
     padding-top: 30%;
@@ -40,6 +56,7 @@
     margin-top: 2.4rem;
     cursor: pointer;
     overflow-y: scroll;
+    scroll-behavior: smooth;
     height: 77vh;
 }
 
@@ -51,12 +68,16 @@
 }
 
 .msgp_Icon {
-    width: 5.5rem;
-    height: 5.5rem;
+    width: 4.5rem;
+    height: 4.5rem;
 }
 
 .msgp_Name {
-    font-size: 2.5rem;
+    font-size: 2rem;
+}
+
+.msgp_Msg {
+    font-size: 2.6rem;
 }
 
 .msgp_para {
@@ -80,13 +101,7 @@
     background-color: chocolate;
 }
 
-.msg_rotate {
-    height: .2rem;
-    width: 199vh;
-    margin-left: -75.5rem;
-    background-color: gainsboro;
-    transform: rotate(90deg);
-}
+
 
 .msgv_icn {
     height: 8rem;
@@ -127,4 +142,74 @@
 
 .message:hover {
     background-color: rgb(199, 202, 199);
+}
+
+.bgmodal {
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalcontents {
+    height: 45rem;
+    width: 70rem;
+    padding: 2rem;
+    position: relative;
+    border-radius: 3rem;
+    background-color: whitesmoke;
+}
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 2rem;
+    font-size: 5rem;
+    color: #333;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #666;
+}
+
+.nameSearch {
+    width: 60%;
+    height: 4rem;
+    margin-top: 2rem;
+    margin-left: 10rem;
+    font-size: 2.5rem;
+    border: none;
+    background-color: whitesmoke;
+}
+
+.searchList {
+    overflow-y: scroll;
+    height: 20rem;
+    margin-top: -1.5rem;
+}
+
+.size {
+    font-size: 1.5rem;
+    margin-top: 4rem;
+    margin-left: 3rem;
+}
+
+.chatBtn {
+    width: 90%;
+    height: 3.5rem;
+    font-size: 2.5rem;
+    border-radius: 1rem;
+    margin-top: 3.5rem;
+    margin-left: 2.5rem;
+    background-color: navajowhite;
+}
+
+.chatBtn:hover{
+    background-color: moccasin;
 }
