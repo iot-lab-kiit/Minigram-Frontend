@@ -5,7 +5,6 @@ import Avatar from '@mui/material/Avatar';
 import { useState } from "react";
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
-import styles2 from '../styles/Messages.module.css';
 
 const messages = () => {
   const number = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -24,17 +23,17 @@ const messages = () => {
         <div className={styles.msg_rotate} />
         <div className={styles.pannel}>
           <div className={styles.msgp_add}>
-            <div className={styles2.heading}>Messages</div>
+            <div className={styles.heading}>Messages</div>
           </div >
           <div className={styles.msgp_notif}>
-            <div className={styles2.messages}>
+            <div className={styles.messages}>
               {number.map(() => (
-                <div className={styles2.message}>
-                  <div >
-                    <Avatar className={styles2.Icon} alt="Remy Sharp" src="https://m.media-amazon.com/images/M/MV5BMTA2OTU0MjEwMDVeQTJeQWpwZ15BbWU4MDIzNjU1MTAx._V1_.jpg" ></Avatar> </div>
-                  <div className={styles2.message_name}>
-                    <div className={styles2.Name}>Harry Kenvic</div>
-                    <div className={styles2.msg_id}>@Harry</div>
+                <div className={styles.message}>
+                  <div>
+                    <Avatar className={styles.Icon} alt="Remy Sharp" src="https://m.media-amazon.com/images/M/MV5BMTA2OTU0MjEwMDVeQTJeQWpwZ15BbWU4MDIzNjU1MTAx._V1_.jpg" ></Avatar> </div>
+                  <div className={styles.message_name}>
+                    <div className={styles.Name}>Harry Kenvic</div>
+                    <div className={styles.msg_id}>@Harry</div>
                   </div>
                 </div>
               ))}

@@ -213,3 +213,153 @@
 .chatBtn:hover {
     background-color: moccasin;
 }
+
+.messages {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.heading {
+    color: #aa75ff;
+    font-weight: 550;
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.message_name {
+    flex-wrap: wrap;
+}
+
+.message {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    padding: 14px 26px;
+    width: 100%;
+    flex-wrap: wrap;
+    font-weight: 400;
+}
+
+.msg_id {
+    font-size: 12px;
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.Icon {
+    width: 36px;
+    height: 36px;
+}
+
+.Name {
+    font-size: 16px;
+}
+
+@media screen and (max-width:412px) {
+    .msg_sbar {
+        width: 0;
+    }
+
+    .msg_view {
+        order: 1;
+        width: 65%;
+    }
+
+    .msg_pannel {
+        order: 0;
+        width: 35%;
+    }
+
+    .modalcontents {
+        height: 33rem;
+        width: 35rem;
+    }
+
+    .nameSearch {
+        margin-top: 0rem;
+        margin-left: 5rem;
+        font-size: 2rem;
+    }
+
+    .size {
+        margin-top: 2rem;
+    }
+
+    .searchList {
+        overflow-y: scroll;
+        height: 14rem;
+        margin-top: -1.5rem;
+    }
+
+    .chatBtn {
+        width: 85%;
+        height: 3rem;
+        font-size: 2rem;
+    }
+
+    .heading {
+        font-size: 19px;
+    }
+
+    .message_name {
+        flex-wrap: wrap;
+    }
+
+    .message {
+        gap: 9px;
+        padding: 14px 4px;
+        flex-wrap: nowrap;
+    }
+
+    .Icon {
+        width: 26px;
+        height: 26px;
+    }
+
+    .Name {
+        font-size: 13px;
+    }
+
+    .msgp_addBtn {
+        margin-top: 2.5rem;
+        margin-left: 37%;
+
+    }
+
+    .msgv_icn {
+        height: 5rem;
+        width: 7rem;
+    }
+
+    .msgv_button {
+        font-size: 1.5rem;
+    }
+
+    .msgp_Msg {
+        font-size: 2rem;
+    }
+
+    .msgp_para {
+        margin-top: 1%;
+        font-size: 1.6rem;
+        margin-bottom: 2%;
+    }
+
+    .msgv_align {
+        padding-top: 60%;
+
+    }
+}
+
+@media screen and (max-width:850px) {
+    .Name {
+        font-size: 11px;
+    }
+}
