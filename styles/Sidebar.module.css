@@ -42,6 +42,15 @@
     border-bottom-right-radius: 15px;
     
 }
+.accountButton{
+    display:flex;
+    align-items: center;
+    width:100%;
+    padding:1rem 1.6rem;
+}
+.loginLink{
+    font-size:1.5rem;
+}
 .Link{
     text-decoration: none !important;
     color: black;
@@ -49,7 +58,7 @@
 }
 .userbutton{
     width:40px;
-    height:40px;  
+    height:40px;   
 }
 .Login{
     cursor: pointer;
@@ -58,9 +67,9 @@
     font-weight: 500;
     font-size: 12px;
     margin: 0 10px;
-    width: 50px;
+    width: 100%;
     padding: 10px 0;
-    box-shadow: 0 0 20px rgba(104, 85, 224, 0.2);
+    /* box-shadow: 0 0 20px rgba(104, 85, 224, 0.2); */
     transition: 0.4s;
 }
 .Login:hover{
