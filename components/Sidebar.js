@@ -19,10 +19,11 @@ export const Sidebar = () => {
     setIsLoggedIn(false);
   };
   return (
+
     <div className={styles.menuContainer}>
       <div className={styles.heading}> Menu</div>
       <div className={styles.Links}>
-        <Link href="/home" style={{ textDecoration: "none" }}>
+        <Link href="/" style={{ textDecoration: "none" }}>
           <div className={styles.sideContain}>
             <div>
               <HomeIcon className={styles.Icon} />
