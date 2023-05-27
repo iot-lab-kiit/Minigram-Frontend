@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import styles from '../styles/Login.module.css';
+import { signup } from "../pages/api/api";
+import styles from "../styles/Login.module.css";
 function SignUp() {
   const [signUpData, setSignUpData] = useState({
-    phoneno: "",
     email: "",
     name: "",
     username: "",
@@ -17,10 +17,32 @@ function SignUp() {
       [name]: value,
     }));
   }
-  function handleSubmit(e) {
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  //   signup(signUpData).then()
+
+  // }
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (
+      signUpData.email === "" ||
+      signUpData.username === "" ||
+      signUpData.password === "" ||
+      signUpData.name === ""
+    ) {
+      alert("Please fill the required details");
+    }
+    setSignUpData({...signUpData});
     console.log(signUpData);
-  }
+    await signup(signUpData)
+      .then((res) => {
+        console.log(res);
+        alert("Sign up sucessfully");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div className={styles.miniGramSignUp}>
       <div className={styles.miniGramSignUpContainer}>
@@ -29,16 +51,16 @@ function SignUp() {
             <h2>Get Started Now</h2>
             <p>Enter your credentials to access your account</p>
           </div>
-          
+
           <form className={styles.miniGramSignUpInfo} onSubmit={handleSubmit}>
-            <label htmlFor="phoneno">Mobile Number</label>
+            {/* <label htmlFor="phoneno">Mobile Number</label>
             <input
               name="phoneno"
               type="text"
               placeholder="Enter your mobile number"
               onChange={handleChange}
               value={signUpData.phoneno}
-            />
+            /> */}
             <label htmlFor="email">Email</label>
             <input
               name="email"
@@ -71,11 +93,11 @@ function SignUp() {
               onChange={handleChange}
               value={signUpData.password}
             />
-          <button >Sign Up</button>
+            <button>Sign Up</button>
           </form>
           <div className={styles.miniGramsignUpFooter}>
             <p>
-              Already have an account? <Link href="/sigin">Log in</Link>
+              Already have an account? <Link href="/signin">Log in</Link>
             </p>
           </div>
         </div>
