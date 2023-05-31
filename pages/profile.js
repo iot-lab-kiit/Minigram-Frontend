@@ -70,7 +70,7 @@ const profile = () => {
         }
       })}
       )
-      <div>
+      <div className="content">
         <PfpCard />
       </div>
     </div>
