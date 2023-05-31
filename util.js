@@ -1,17 +1,12 @@
+import { fetchPosts } from "./pages/api/api";
 
 
-export const getAllPosts = async () => {
+export const getAllPosts =  async () => {
     
-    try{
-        const response = await fetch('https://minigram-backend.onrender.com/post');
-        const data = await response.json();
-        return data;
-    }
-    catch(err){
-        console.log(err)
-        return err;
-    }
-    
+   const posts = await fetchPosts();
+    return posts.data;
+
+
 }
 
 
