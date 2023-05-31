@@ -13,7 +13,7 @@ import styles from '../styles/Cards.module.css';
 import {fetchPosts,likePost} from '../pages/api/api';
 import {format} from 'timeago.js';
 
-export const Cards = (req, res) => {
+export const Cards = (req,res, gridbase) => {
   const [fav, setFav] = useState(false);
   const [posts,setposts]=useState([])
   useEffect(()=>{
