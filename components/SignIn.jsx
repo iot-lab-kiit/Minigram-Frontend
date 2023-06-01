@@ -1,7 +1,6 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import styles from "../styles/Login.module.css";
-// import { signin } from "../pages/api/api";
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import { signin } from '../redux/actions/auth';
