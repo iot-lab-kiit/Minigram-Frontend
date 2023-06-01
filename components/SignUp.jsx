@@ -36,7 +36,8 @@ function SignUp() {
     console.log(signUpData);
     await signup(signUpData)
       .then((res) => {
-        console.log(res);
+        console.log(res.data);
+        localStorage.setItem('token',res.data);
         alert("Sign up sucessfully");
       })
       .catch((error) => {
