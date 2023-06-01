@@ -5,7 +5,6 @@ import { signin } from "../pages/api/api";
 import { useRouter } from 'next/router';
 function SignIn() {
   const router =useRouter();
-
   const [data, setData] = useState({
     username: "",
     email: "",
