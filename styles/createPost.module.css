@@ -1,3 +1,47 @@
 .miniGramCreatePost{
-    
+    width:100vw;
+    height:100vh;
+    /* border:2px solid black; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.miniGramCreatePostContainer{
+    width:50vw;
+    /* height:80%; */
+    /* border: 2px solid blue; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.miniGramCreatePostContainer input{
+    display: none;
+}
+.miniGramCreatePostImage{
+    width:100%;
+}
+.miniGramCreatePostUploadIcon{
+    width:27vw;
+    height:41vh;
+    color:#A974FF;
+}
+.miniGramUploadButton{
+    width:12rem;
+    height:3.5rem;
+    border:none;
+    background-color:#4caf50;
+    color:#ffffff;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 400;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1rem;
+    padding: 0.8rem 1.2rem;
+}
+.miniGramCreatePostInnerContainer h1{
+ font-size:2.5vw;
+ text-align: center;
 }
