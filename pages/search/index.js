@@ -1,8 +1,9 @@
 import React, { Fragment } from 'react'
-import { Sidebar } from '../components/Sidebar'
-import classes from '../styles/Search.module.css';
+import { Sidebar } from '../../components/Sidebar'
+import classes from '../../styles/Search.module.css';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-
+import { useState } from 'react';
+import { useRouter } from 'next/router';
 const searchD = [
     {id:'i1', title:'culture', bg:'#11f07e'},
     {id:'i2', title:'Bussiness', bg:'#919191'},
@@ -19,16 +20,35 @@ const searchD = [
 
 
 const Search = () => {
+
+  
+
+  const [userInp, setUserInp ] = useState('');
+
+
+   const router = useRouter();
+
+
+    const searchInputChnageHandler=  (e) => {
+        setUserInp(e.target.value)
+    }
+    
+    const submitHandler = (e) => {
+        
+        e.preventDefault();
+        router.push(`/search/${userInp}`);
+    }
+
     return (
   
           <Fragment>
 
             <Sidebar/>
-              <div className={`container  mx-auto justify-center items-end flex flex-col space-y-38 ${classes.customsize}`}>
+              <div className={`container  mx-auto justify-center items-end flex flex-col space-y-38 ${classes.customsize}`} onSubmit={submitHandler}>
                   <form className={` relative ${classes.form}`}>
                     <div className={classes.searchBar}>
                     <SearchOutlinedIcon style={{width:'3rem', height:'3rem', fill:'#c9c9c7'}}/>
-                      <input  type='text' placeholder='Search User/Group/Pages' className='py-2   placeholder:text-2xl'></input>
+                      <input  onChange={searchInputChnageHandler} type='text' placeholder='Search User/Group/Pages' className='py-2   placeholder:text-2xl'></input>
                           
                       </div>
                   </form>
