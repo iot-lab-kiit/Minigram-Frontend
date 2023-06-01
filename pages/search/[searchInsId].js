@@ -1,20 +1,27 @@
-import React, { Fragment, useState } from 'react'
-import classes from './SearchDetail.module.css'
-import { useRouter } from 'next/router';
+import React from 'react'
 import SearchDetail from '../../components/SearchDetail';
-import { getAllPosts, getUserByName } from '../../util';
-
-
+import { fetchPosts } from '../api/api';
 
 
 const searchDetailPage =  (props) => {
 
   return (
-
         <div>
         <SearchDetail  user={props.user}/>
         </div>
   )
+}
+
+
+export const getUserByName = async (usrname) => {
+    const allUsers = await fetchPosts();
+    const user = allUsers.data.find(item => item.creator.name === usrname);
+    if(user){
+        return user;
+    }
+    else{
+        return {}
+    }
 }
 
 
@@ -31,8 +38,8 @@ export const getStaticProps = async (context) => {
 }
 
 export const getStaticPaths =  async () => {
-    const allPosts =  await getAllPosts();
-    const paths =  allPosts.map((user) => ({params:{searchInsId:user.creator.name}}))
+    const allPosts = await fetchPosts();
+    const paths =  allPosts.data.map((user) => ({params:{searchInsId:user.creator.name}}))
     return{
         paths:paths,
         fallback:false,
@@ -41,6 +48,7 @@ export const getStaticPaths =  async () => {
 
     
 }
+
 
 
 export default searchDetailPage
