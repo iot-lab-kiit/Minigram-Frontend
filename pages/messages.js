@@ -2,16 +2,20 @@ import React from "react";
 import { Sidebar } from '../components/Sidebar.js'
 import styles from '../styles/MessagesPage.module.css';
 import Avatar from '@mui/material/Avatar';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
-import styles2 from '../styles/Messages.module.css';
+import ChatSection from "../components/ChatSection.jsx";
 
 const messages = () => {
+
+  const [conversations, setConversations] = useState([]);
   const number = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   const names = [1, 2, 3, 4];
   const [showModal, setShowModal] = useState(false);
   const [createGroup, setCreateGroup] = useState(false);
+  const [msgArea, setMsgArea] = useState(true);
+
   return (
     <div className={styles.msg_body}>
 
@@ -24,17 +28,17 @@ const messages = () => {
         <div className={styles.msg_rotate} />
         <div className={styles.pannel}>
           <div className={styles.msgp_add}>
-            <div className={styles2.heading}>Messages</div>
+            <div className={styles.heading}>Messages</div>
           </div >
           <div className={styles.msgp_notif}>
-            <div className={styles2.messages}>
+            <div className={styles.messages}>
               {number.map(() => (
-                <div className={styles2.message}>
+                <div onClick={() => setMsgArea(true)} className={styles.message}>
                   <div >
-                    <Avatar className={styles2.Icon} alt="Remy Sharp" src="https://m.media-amazon.com/images/M/MV5BMTA2OTU0MjEwMDVeQTJeQWpwZ15BbWU4MDIzNjU1MTAx._V1_.jpg" ></Avatar> </div>
-                  <div className={styles2.message_name}>
-                    <div className={styles2.Name}>Harry Kenvic</div>
-                    <div className={styles2.msg_id}>@Harry</div>
+                    <Avatar className={styles.Icon} alt="Remy Sharp" src="https://m.media-amazon.com/images/M/MV5BMTA2OTU0MjEwMDVeQTJeQWpwZ15BbWU4MDIzNjU1MTAx._V1_.jpg" ></Avatar> </div>
+                  <div className={styles.message_name}>
+                    <div className={styles.Name}>Harry Kenvic</div>
+                    <div className={styles.msg_id}>@Harry</div>
                   </div>
                 </div>
               ))}
@@ -57,7 +61,29 @@ const messages = () => {
         </div>
 
       </div>
+      {
+        msgArea ? (
+          <div className={styles.chatArea}>
+            <div className={styles.chatClose} onClick={() => setMsgArea(false)}>+</div>
+            <div className={styles.chatContents}>
+              <div className={styles.chatBoxTop}>
+                <ChatSection />
+                <ChatSection own={true} />
+                <ChatSection />
+                <ChatSection />
+                <ChatSection />
+                <ChatSection />
+                <ChatSection />
 
+              </div>
+              <div className={styles.chatBoxBottom}>
+                <textarea className={styles.chatInput} placeholder="Text" ></textarea>
+                <button className={styles.chatSendButton}>Send</button>
+              </div>
+            </div>
+          </div>
+        ) : null
+      }
       {
         showModal ? (
           <div className={styles.bgmodal}>
