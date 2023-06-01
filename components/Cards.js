@@ -44,7 +44,7 @@ export const Cards = (req,res, gridbase) => {
           <Typography className={styles.name} component="p">{post.creator.name} </Typography>
           <Typography className={styles.time} component="p">{format(post.createdAt)}</Typography>
         </div>
-        <CardMedia component="img" className={styles.post} image="https://feeds.abplive.com/onecms/images/uploaded-images/2023/02/20/56c70f393e65f3fbc15b4ece31b7be6c167689957611424_original.jpg?impolicy=abp_cdn&imwidth=720" alt="Paella dish" />
+        <CardMedia component="img" className={styles.post} image={post.selectedFile} alt="Paella dish" />
         <div className={styles.iconContainer} >
           <IconButton aria-label="like" className='like'>
             {fav ?
