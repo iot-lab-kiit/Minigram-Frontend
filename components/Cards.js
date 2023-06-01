@@ -4,6 +4,8 @@ import CardMedia from '@mui/material/CardMedia';
 import Avatar from '@mui/material/Avatar';
 import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
+import ModalL from './ModalL';
+import Modal from '@mui/material/Modal'
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
@@ -16,12 +18,22 @@ import {format} from 'timeago.js';
 export const Cards = (req,res, gridbase) => {
   const [fav, setFav] = useState(false);
   const [posts,setposts]=useState([])
+  const [showComponent,setShowComponent]=useState(false);
+  const [open, setOpen] = React.useState(false);
   useEffect(()=>{
     fetchPosts().then((res)=>{
       console.log(res);
       setposts(res.data);
     })
   },[])
+  const handleClose = () => {
+    setOpen(false);
+  };
+    
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
 
   return (
     <div className={styles.cardsContainer}>
@@ -32,7 +44,7 @@ export const Cards = (req,res, gridbase) => {
           <Typography className={styles.name} component="p">{post.creator.name} </Typography>
           <Typography className={styles.time} component="p">{format(post.createdAt)}</Typography>
         </div>
-        <CardMedia component="img" className={styles.post} image="https://feeds.abplive.com/onecms/images/uploaded-images/2023/02/20/56c70f393e65f3fbc15b4ece31b7be6c167689957611424_original.jpg?impolicy=abp_cdn&imwidth=720" alt="Paella dish" />
+        <CardMedia component="img" className={styles.post} image={post.selectedFile} alt="Paella dish" />
         <div className={styles.iconContainer} >
           <IconButton aria-label="like" className='like'>
             {fav ?
@@ -45,7 +57,22 @@ export const Cards = (req,res, gridbase) => {
           <IconButton aria-label='Share'><SendSharpIcon className={styles.icon} /></IconButton>
         </div>
         <div className={styles.footerContainer}>
-           <Typography className={styles.likesComments}>{post.likes.length} likes</Typography>
+           <Typography className={styles.likesComments} onClick={handleOpen}>{post.likes.length} likes</Typography>
+           <Modal
+            onClose={handleClose}
+            open={open}
+            style={{
+              position: 'absolute',
+              border: '2px solid #000',
+              backgroundColor: 'gray',
+              boxShadow: '2px solid black',
+              height:400,
+              width: 400,
+              margin: 'auto'
+            }}
+          >
+          <ModalL/>
+          </Modal>
            <div className={styles.flexContainer}>
             <Typography className={styles.nameInfo}>{post.creator.name}</Typography>
             <Typography className={styles.caption}>{post.message}</Typography>
