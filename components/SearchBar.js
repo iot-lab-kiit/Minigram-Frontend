@@ -63,7 +63,7 @@ export const SearchBar = ({ setResults }) => {
           <SearchIcon sx={{ fontSize: 25 }} id={styles.searchicon} />
           <input
             className={styles.inputselector}
-            placeholder="Search Minigram..."
+            placeholder="Search Most Trending Topics"
             value={input}
             onChange={(e) => handleChange(e.target.value)}
           />
