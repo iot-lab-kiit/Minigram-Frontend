@@ -36,16 +36,73 @@
     box-sizing: border-box;
 }
 .sideContain:hover{
-    background-color: rgb(69, 67, 67);
+    background-color: rgb(199, 202, 199);
     justify-content: flex-end;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
     
 }
+.accountButton{
+    display:flex;
+    align-items: center;
+    width:100%;
+    padding:1rem 1.6rem;
+}
+.loginLink{
+    font-size:1.5rem;
+}
 .Link{
     text-decoration: none !important;
     color: black;
     font-size: 14px;
+}
+.userbutton{
+    width:40px;
+    height:40px;   
+}
+.Login{
+    cursor: pointer;
+    border: 0;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 12px;
+    margin: 0 10px;
+    width: 100%;
+    padding: 10px 0;
+    /* box-shadow: 0 0 20px rgba(104, 85, 224, 0.2); */
+    transition: 0.4s;
+}
+.Login:hover{
+    background-color: #A974FF;
+}
+.Avatar{
+    width: 60px;
+    height: 60px;
+    padding-left: 15px;
+}
+.Logout{
+    cursor: pointer;
+    border: 0;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 12px;
+    margin: 0 10px;
+    width: 50px;
+    padding: 10px 0;
+    box-shadow: 0 0 20px rgba(104, 85, 224, 0.2);
+    transition: 0.4s;
+    background-color: #A974FF;
+}
+.Logout:hover{
+    background-color: white;
+}
+
+.AccountButton{
+    display: flex;
+    flex-direction:row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
 }
 
 @media screen and (max-width:1024px) {
@@ -142,5 +199,23 @@
         height: 80px;
         padding: 0px 16px 6px 16px;
         box-sizing: border-box;
+    }
+    .Login{
+        cursor: pointer;
+        border: 0;
+        border-radius: 4px;
+        font-weight: 500;
+        font-size: 12px;
+        margin: 0 10px;
+        width: 50px;
+        padding: 10px 0;
+        box-shadow: 0 0 20px rgba(104, 85, 224, 0.2);
+        transition: 0.4s;
+        display: none;
+    }
+    .userbutton{
+        width:40px;
+        height:40px;  
+        display: none;
     }
 }
