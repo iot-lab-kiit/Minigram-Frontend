@@ -25,7 +25,7 @@ const messages = () => {
         <div className={styles.pannel}>
           <div className={styles.msgp_add}>
             <div className={styles2.heading}>Messages</div>
-          </div >
+            </div>
           <div className={styles.msgp_notif}>
             <div className={styles2.messages}>
               {number.map(() => (
