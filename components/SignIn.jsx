@@ -4,7 +4,7 @@ import styles from "../styles/Login.module.css";
 import { signin } from "../pages/api/api";
 import { useRouter } from 'next/router';
 function SignIn() {
-  const router =useRouter();
+  const router = useRouter();
 
   const [data, setData] = useState({
     username: "",
@@ -30,6 +30,7 @@ function SignIn() {
     await signin(data)
       .then((res) => {
         console.log(res);
+        localStorage.setItem('token', res.data.result);
         alert("Succesfully Login");
         router.push('/');
       })
