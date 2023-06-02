@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import HomeIcon from "@mui/icons-material/Home";
+import Icon from '@mui/material/Icon';
 import SearchIcon from "@mui/icons-material/Search";
 import ExploreOutlinedIcon from "@mui/icons-material/ExploreOutlined";
 import TextsmsOutlinedIcon from "@mui/icons-material/TextsmsOutlined";
 import Avatar from "@mui/material/Avatar";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 import Link from "next/link";
 import styles from "../styles/Sidebar.module.css";
 export const Sidebar = () => {
@@ -61,6 +63,14 @@ export const Sidebar = () => {
               <AccountCircleOutlinedIcon className={styles.Icon} />
             </div>
             <div className={styles.Link}>Profile</div>
+          </div>
+        </Link>
+        <Link href="/createpost" style={{ textDecoration: "none" }}>
+          <div className={styles.sideContain}>
+            <div>
+              <AddCircleIcon className={styles.Icon} />
+            </div>
+            <div className={styles.Link}>Create Post</div>
           </div>
         </Link>
         <div>
