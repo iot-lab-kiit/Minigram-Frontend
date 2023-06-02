@@ -61,15 +61,6 @@ export const Cards = (req,res, gridbase) => {
            <Modal
             onClose={handleClose}
             open={open}
-            style={{
-              position: 'absolute',
-              border: '2px solid #000',
-              backgroundColor: 'gray',
-              boxShadow: '2px solid black',
-              height:400,
-              width: 400,
-              margin: 'auto'
-            }}
           >
           <ModalL/>
           </Modal>
