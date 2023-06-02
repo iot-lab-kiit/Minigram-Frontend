@@ -62,7 +62,7 @@ export const Cards = (req,res, gridbase) => {
             onClose={handleClose}
             open={open}
           >
-          <ModalL/>
+          <ModalL post={post}/>
           </Modal>
            <div className={styles.flexContainer}>
             <Typography className={styles.nameInfo}>{post.creator.name}</Typography>
