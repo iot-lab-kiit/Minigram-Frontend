@@ -67,6 +67,14 @@
     margin-left: 1rem;
 }
 
+.noChat {
+    position: absolute;
+    top: 10%;
+    font-size: 5rem;
+    color: black;
+    text-align: center;
+}
+
 .msgp_Icon {
     width: 4.5rem;
     height: 4.5rem;

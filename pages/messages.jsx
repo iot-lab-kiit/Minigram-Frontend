@@ -12,15 +12,14 @@ import { getDM, fetchUser, getMessages, createMessage } from "./api/api.js";
 
 const messages = () => {
 
-  const [createGroup, setCreateGroup] = useState(false);
+  // const [createGroup, setCreateGroup] = useState(false);
   const [msgArea, setMsgArea] = useState(false);
   const [user, setUser] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
-  const [messages, setMessages] = useState(null);
   const [newMessage, setNewMessage] = useState("");
   const scrollRef = useRef();
   const [conversations, setConversations] = useState([]);
-  const [friend, setFriend] = useState(null);
+  // const [friend, setFriend] = useState(null);
   const [dms, setDms] = useState([]);
 
   useEffect(() => {
@@ -48,51 +47,57 @@ const messages = () => {
   }, [user])
   console.log(conversations)
 
-  const messaging = async () => {
-    // getMessages(currentChat?._id).then((res) => {
-    //     setdms(res.data);
-    //     console.log(dms);
-    // })
-    //     .catch((err) =>
-    //         console.log(err));
-    try {
-      const res = await getMessages(currentChat?._id)
-      const friendId = currentChat?.members.find((m) => m !== user._id);
-      fetchUser(friendId).then((res) => {
-        setFriend(res.data);
-      }).catch((err) => console.log(err))
-      console.log(res.data)
-      setDms(res.data.messages);
-    } catch (err) {
-      console.log(err);
-    }
-  }
-  useEffect(() => {
-    messaging();
-  }, [currentChat])
+  // const messaging = async () => {
+  //   // getMessages(currentChat?._id).then((res) => {
+  //   //     setdms(res.data);
+  //   //     console.log(dms);
+  //   // })
+  //   //     .catch((err) =>
+  //   //         console.log(err));
+  //   try {
+  //     const res = await getMessages(currentChat?._id)
+  //     const friendId = currentChat?.members.find((m) => m !== user._id);
+  //     fetchUser(friendId).then((res) => {
+  //       setFriend(res.data);
+  //     }).catch((err) => console.log(err))
+  //     console.log(res.data)
+  //     setDms(res.data.messages);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }
   // useEffect(() => {
-  //   const getMessages = async () => {
-  //     try {
-  //       const res = await axios.get("/messages/" + currentChat?._id)
-  //       console.log(res)
-  //       // setMessages(res.data);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-  //   getMessages();
-  // }, [currentChat]);
+  //   messaging();
+  // }, [currentChat])
+
+
+
+  useEffect(() => {
+    const getMsgs = async () => {
+      try {
+        const res = await getMessages(currentChat?._id)
+        // console.log(res)
+        setDms(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getMsgs();
+  }, [currentChat]);
+
+  console.log(dms)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const message = {
+    const msg = {
       sender: user._id,
       text: newMessage,
       conversationId: currentChat._id,
     };
     try {
-      const res = await axios.post("/messages", message);
-      setMessages([...messages, res.data]);
+      const res = await createMessage(msg);
+      setDms([...dms, res.data]);
+      // console.log(res.data)
       setNewMessage("");
     } catch (err) {
       console.log(err);
@@ -107,15 +112,37 @@ const messages = () => {
   //     conversationId: currentChat._id
   //   }
   //   console.log(message);
+  //   // console.log(e))
   //   const receiverId = currentChat.members.find(
   //     (member) => member !== user._id
   //   );
+  //   // console.log(receiverId)
+  //   try {
+  //     createMessage(message.text, user._id)
+  //     const res = await getMessages(user._id)
+  //     // const res = await axios.post("https://minigram-backend.onrender.com/messages", message);
+  //     setDms([...dms, res]);
+  //     console.log(res)
+  //     setNewMessage("");
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  //   setNewMessage("");
   // }
 
+  // useEffect(() => {
+  //   scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+  // }, [messages]);
 
-  useEffect(() => {
-    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  // console.log(currentChat)
+
+  // useEffect(() => {
+  //   {
+  //     dms?.map((message) => {
+  //       console.log(message)
+  //     })
+  //   }
+  // })
 
   return (
     <div className={styles.msg_body}>
@@ -125,7 +152,6 @@ const messages = () => {
       </div>
 
       <div className={styles.msg_pannel}>
-
         <div className={styles.msg_rotate} />
         <div className={styles.pannel}>
           <div className={styles.msgp_add}>
@@ -145,9 +171,8 @@ const messages = () => {
 
             </div>
           </div>
-          <AddCircleRoundedIcon className={styles.msgp_addBtn} onClick={() => setCreateGroup(true)} />
+          <AddCircleRoundedIcon className={styles.msgp_addBtn} />
         </div>
-
       </div>
 
       <div className={styles.msg_view}>
@@ -171,7 +196,8 @@ const messages = () => {
                         <div className={styles.chatBoxBottom}>
                           <textarea className={styles.chatInput} placeholder="Text" onChange={(e) => setNewMessage(e.target.value)} value={newMessage} ></textarea>
                           <button className={styles.chatSendButton} onClick={(e) => handleSubmit(e)}>Send</button>
-                        </div></> : <span> No Chat</span>}
+                        </div>
+                      </> : <span className={styles.noChat}>No Chat</span>}
                 </div>
               </div>
             ) :
@@ -187,7 +213,7 @@ const messages = () => {
       </div>
 
 
-      {
+      {/* {
         createGroup ? (
           <div className={styles.bgmodal}>
             <div className={styles.modalcontents}>
@@ -208,7 +234,7 @@ const messages = () => {
             </div>
           </div>
         ) : null
-      }
+      } */}
 
     </div>
   )
