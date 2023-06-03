@@ -1,11 +1,20 @@
 import React from 'react'
 import SignUp from '../components/SignUp'
+import { Provider } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
+import { reducers } from '../redux/reducers';
 
-function signup() {
+const store = configureStore({
+  reducer: reducers
+});
+
+const signup = () => {
   return (
-    <div>
+    <Provider store={store}>
+      <div>
         <SignUp />
-    </div>
+      </div>
+    </Provider>
   )
 }
 

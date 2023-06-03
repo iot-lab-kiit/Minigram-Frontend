@@ -1,5 +1,5 @@
 import React from 'react'
-import classes from './SearchDetail.module.css'
+import classes from '../styles/SearchDetail.module.css'
 import { Cards } from './Cards'
 const SearchDetail = ({user}) => {
 

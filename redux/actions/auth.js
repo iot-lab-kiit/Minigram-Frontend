@@ -1,25 +1,23 @@
-import {AUTH} from "../const/actionTypes";
-import * as api from "../../api/index";
+import { AUTH } from "../const/actionTypes";
+import * as api from "../../pages/api/api";
 
-export const signupGoogle = (accessToken, navigate) => async (dispatch)=>{
-    try{
-        // signup user
-        const {data} = await api.signup(accessToken)
-
-        dispatch({type : AUTH, data})
-        navigate("/messaging")
-    }catch(err){
-        console.log(err);
+export const signin = (formData) => async (dispatch) => {
+    try {
+        //log in the user
+        const { data } = await api.signin(formData);
+        console.log(data);
+        dispatch({ type: AUTH, data });
+    } catch (error) {
+        console.log(error);
     }
 }
-
-export const signinGoogle = (accessToken, navigate) => async (dispatch)=>{
-    try{
-        // login user
-        const {data} = await api.signin(accessToken)
-        dispatch({type : AUTH, data})
-        navigate("/messaging")
-    }catch(err){
-        console.log(err)
+export const signup = (formData) => async (dispatch) => {
+    try {
+        //log in the user
+        const { data } = await api.signup(formData);
+        console.log(data);
+        dispatch({ type: AUTH, data });
+    } catch (error) {
+        console.log(error);
     }
 }
