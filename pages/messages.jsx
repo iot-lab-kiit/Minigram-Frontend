@@ -10,7 +10,7 @@ import { getDM, getMessages, createMessage } from "./api/api.js";
 
 const messages = () => {
 
-  const [msgArea, setMsgArea] = useState(true);
+  const [msgArea, setMsgArea] = useState(false);
   const [user, setUser] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
   const [newMessage, setNewMessage] = useState("");
