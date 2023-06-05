@@ -1,13 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { Sidebar } from "../components/Sidebar.js";
 import { PfpCard } from "../components/PfpCard.js";
-
+import { PfpUser} from "../components/PfpUser.js";
+import { fetchUser } from "../pages/api/api";
+import SettingsIcon from "@mui/icons-material/Settings";
 import styles from "../styles/profile.module.css";
 import Image from "next/image";
-import SettingsIcon from "@mui/icons-material/Settings";
+
 var p = 2;
-var c = 421;
+var c = 0;
 var n = 4;
+
+
+// const [Id, setId] = useState([]);
+// useEffect(() => {
+//   fetchUser().then((res) => {
+//     console.log(res);
+//     setId(res.data);
+//   });
+// }, []);
 
 const profile = () => {
   const [profile, setProfile] = useState([]);
@@ -42,23 +53,29 @@ const profile = () => {
                 ></img>
               </div>
               <div className={styles.bio}>
-                <div className={styles.edit}>
-                  <p>{info.creator.username}</p>
+
+                {/* <div className={styles.edit}>
+                  
                   <button className={styles.editb}>edit profile</button>
                   <SettingsIcon sx={{ fontSize: 30 }} />
+                </div> */}
+                {/* <PfpUser /> */}
+                <div className={styles.flex}>
+                <span>{info.creator.username}</span>
+                {profile.name!=info.creator.username && <PfpUser/>}
                 </div>
+                {console.log("Hello")}
+                {console.log(profile.name)}
                 <div className={styles.data}>
                   <div className={styles.posts}>
-                    <div className={styles.bo}>{info.creator.posts.length}</div>{" "}
+                    <div className={styles.bo}>2</div>{" "}
                     posts
                   </div>
                   <div className={styles.conex}>
                     <div className={styles.bo}>{c}</div> connections
                   </div>
                 </div>
-                <div className={styles.caption}>
-                  Got war in my mind ♡ {info.creator.bio}
-                </div>
+                <div className={styles.caption}>{info.creator.bio}</div>
                 <div className={styles.links}>
                   <a href="https://www.w3.org/Provider/Style/dummy.html">
                     {info.creator.email}
@@ -70,7 +87,7 @@ const profile = () => {
         }
       })}
       )
-      <div className="content">
+      <div className={styles.content}>
         <PfpCard />
       </div>
     </div>
