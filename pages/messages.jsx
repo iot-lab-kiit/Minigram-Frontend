@@ -25,23 +25,23 @@ const messages = () => {
   const socket = useRef();
   const scrollRef = useRef();
 
-  useEffect(() => {
-    fetch("https://minigram-backend.onrender.com/user").then(response => {
-      return response.json();
-    }).then(data => {
-      setUser(data[0]);
-    }).catch(err => {
-      console.log(err.message)
-    })
-  })
+  // useEffect(() => {
+  //   fetch("https://minigram-backend.onrender.com/user").then(response => {
+  //     return response.json();
+  //   }).then(data => {
+  //     setUser(data[0]);
+  //   }).catch(err => {
+  //     console.log(err.message)
+  //   })
+  // })
 
   // console.log(user)
 
-  // useEffect(() => {
-  //   const variab = JSON.parse(localStorage.getItem('user_info'));
-  //   console.log(variab)
-  //   setUser(variab)
-  // })
+  useEffect(() => {
+    const variab = JSON.parse(localStorage.getItem('user_info'));
+    // console.log(variab)
+    setUser(variab)
+  })
 
   // useEffect(() =>
   //   console.log(user)

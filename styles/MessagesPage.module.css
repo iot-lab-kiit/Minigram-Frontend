@@ -261,7 +261,7 @@
 
 .searchList {
     overflow-y: scroll;
-    height: 50%;
+    height: 50vh;
     margin-top: 2.4vh;
     padding: 2vh;
 }
