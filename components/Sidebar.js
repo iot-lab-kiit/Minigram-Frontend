@@ -131,21 +131,21 @@ export const Sidebar = () => {
         <div>
           <div>
             {isLoggedIn ? (
-              <div className={styles.accountButton}>
+              <div className={styles.sideContain}>
                 <Avatar
                   src="https://newprofilepic2.photo-cdn.net//assets/images/article/profile.jpg"
-                  className={styles.userbutton}
+                  className={styles.Icon}
                 ></Avatar>
                 <button
                   onClick={handleLogout}
-                  className={styles.Logout}
-                ></button>
+                  className={styles.Link}
+                > Logout</button>
               </div>
             ) : (
-              <div className={styles.accountButton}>
-                <AccountCircleOutlinedIcon className={styles.userbutton} />
+              <div className={styles.sideContain}>
+                <AccountCircleOutlinedIcon className={styles.Icon} />
                 <Link className={styles.loginLink} href="/signup">
-                  <button onClick={handleLogin} className={styles.Login}>
+                  <button onClick={handleLogin} className={styles.Link}>
                     Login/Signup
                   </button>
                 </Link>
