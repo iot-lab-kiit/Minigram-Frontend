@@ -13,14 +13,14 @@ const CssTextField = styled(TextField)({
   },
   "& label": {
     color: "black",
-    fontSize: "1.25rem",
+    fontSize: "1.5rem",
   },
   "& .css-1rcvvn7-MuiInputBase-root-MuiInput-root:after": {
     borderBottom: "2px solid purple",
   },
   "& .MuiFormHelperText-root": {
     color: "black",
-    fontSize: "1rem",
+    fontSize: "1.3rem",
   },
   "& .MuiInputBase-colorPrimary": {
     color: "purple",
@@ -58,7 +58,12 @@ function createpost() {
     e.preventDefault();
     console.log("Image successfully submitted");
     alert("Image submitted sucessfully");
+    console.log(tags);
+    console.log(caption);
+    console.log(image);
+    console.log(filter);
     router.push("/");
+
   }
   const [tags, setTags] = React.useState([]);
   const removeTags = (indexToRemove) => {
@@ -112,7 +117,7 @@ function createpost() {
                 id="standard-multiline-static"
                 label="Caption"
                 multiline
-                rows={3}
+                rows={4}
                 variant="standard"
                 fullWidth
                 value={caption}
