@@ -5,6 +5,7 @@ const API = axios.create({ baseURL: `https://minigram-backend.onrender.com/` });
 //user api
 export const signup=(newUser)=>API.post('/user/signup',newUser);
 export const signin=(existingUser)=>API.post('/user/signin',existingUser);
+export const searchUsers=(search)=>API.get(`/user/search?n=${search}`);
 export const fetchUsers = () => API.get('/user');
 export const fetchUser = (id) => API.get(`/user/${id}`);
 export const updateUser = (id,updatedUser) => API.patch(`/user/${id}`,updatedUser);
@@ -12,9 +13,11 @@ export const deleteUser = (id) => API.delete(`/user/${id}`);
 
 //post api
 export const createPost=(newPost,token)=>API.post('/post',newPost,{ headers: { "Authorization" : `Bearer ${token}` }},{ withCredentials: true });
+export const filterPosts=(search)=>API.get(`/post/search?q=${search}`);
+export const fetchPost=(id)=>API.get(`/post/${id}`);
 export const fetchPosts=()=>API.get('/post');
 export const updatePost=(id,updatedPost,token)=>API.patch(`/post/${id}`,updatedPost,{ headers: { "Authorization" : `Bearer ${token}` }}, { withCredentials: true });
-export const likePost=(id,token)=>API.patch(`/post/like/${id}`, { headers: { "Authorization" : `Bearer ${token}` }}, { withCredentials: true });
+export const likePost=(postid,userid,token)=>API.patch(`/post/like?p=${postid}&u=${userid}`, { headers: { "Authorization" : `Bearer ${token}` }}, { withCredentials: true });
 export const deletePost=(id,token)=>API.delete(`/post/${id}`, { headers: { "Authorization" : `Bearer ${token}` }}, { withCredentials: true });
 
 //comment api

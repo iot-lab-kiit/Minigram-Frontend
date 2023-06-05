@@ -1,8 +1,3 @@
-<<<<<<< dev-anshul
-import React from 'react'
-
-const explore = () => {
-=======
 import React, { useState } from "react";
 import { Sidebar } from "../components/Sidebar";
 import styles from "../styles/Explore.module.css";
@@ -11,12 +6,21 @@ import { SearchBar } from "../components/SearchBar";
 import { SearchResultsList } from "../components/SearchResultsList";
 import { TodayOnMinigram } from "../components/TodayOnMinigram";
 import { ExploreAll } from "../components/ExploreAll";
-const Explore = () => {
-  const [results, setResults] = useState([]);
->>>>>>> local
-  return (
-    <div>explore</div>
-  )
-}
 
-export default explore
+const explore = () => {
+  const [results, setResults] = useState([]);
+
+  return (
+    <div>
+      <Sidebar />
+      <SearchBar setResults={setResults} />
+      {results.length > 0 && <SearchResultsList results={results} />}
+      <div className={styles.heading}>TODAY ON MINIGRAM</div>
+      <TodayOnMinigram />
+      <div className={styles.heading}>EXPLORE ALL</div>
+      <ExploreAll />
+    </div>
+  );
+};
+
+export default Explore;

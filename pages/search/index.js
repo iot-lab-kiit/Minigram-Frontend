@@ -4,6 +4,7 @@ import classes from '../../styles/Search.module.css';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+
  export const searchD = [
     {id:'i1', title:'culture', bg:'#11f07e'},
     {id:'i2', title:'Bussiness', bg:'#919191'},
