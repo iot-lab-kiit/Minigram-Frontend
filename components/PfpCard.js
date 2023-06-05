@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/profile.module.css";
+import styles1 from "../styles/Loader.module.css";
 export const PfpCard = () => {
   const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true); // Set initial loading state to true
   let s = [];
   const fetchUserData = () => {
     fetch("https://minigram-backend.onrender.com/post")
@@ -10,6 +12,7 @@ export const PfpCard = () => {
       })
       .then((data) => {
         setUsers(data);
+        setLoading(false); // Set loading to false when data fetched
       });
   };
 
@@ -19,7 +22,12 @@ export const PfpCard = () => {
 
   return (
     <div className={styles.grid}>
-      {users.map((user) => (
+      {loading ? (
+        <div className={styles1.loaderContainer}>
+          <div className={styles1.customLoader}></div>
+        </div>
+      ) : (
+      users.map((user) => (
         <div>
           <div className={styles.photo}>
             {console.log(user.creator.posts)}
@@ -30,8 +38,9 @@ export const PfpCard = () => {
             />
           </div>
         </div>
-      ))}
-      ;
+      ))
+      )}
+      
     </div>
   );
 };
