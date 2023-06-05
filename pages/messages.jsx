@@ -1,29 +1,31 @@
-import React from "react";
+import { React, useState, useEffect, useRef } from "react";
 import { Sidebar } from '../components/Sidebar.js'
 import styles from '../styles/MessagesPage.module.css';
-import axios from "axios";
-import { useState, useEffect } from "react";
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import ChatSection from "../components/ChatSection.jsx";
 import Conversations from "../components/Conversations.jsx";
-import { useRef } from "react";
-import { getDM, fetchUser, getMessages, createMessage } from "./api/api.js";
+import { io } from 'socket.io-client';
+import { getDM, getMessages, createMessage } from "./api/api.js";
 
 const messages = () => {
 
-  // const [createGroup, setCreateGroup] = useState(false);
-  const [msgArea, setMsgArea] = useState(false);
+  const [msgArea, setMsgArea] = useState(true);
   const [user, setUser] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
   const [newMessage, setNewMessage] = useState("");
-  const scrollRef = useRef();
   const [conversations, setConversations] = useState([]);
-  // const [friend, setFriend] = useState(null);
   const [dms, setDms] = useState([]);
+  const [searchModal, setSearchModal] = useState(false);
+  const [searchName, setSearchName] = useState("");
+  const [arrivalMessage, setArrivalMessage] = useState(null);
+  const [friendList, setFriendList] = useState([]);
+  const [friendNames, setFriendNames] = useState([]);
+  const [searchOn, setSearchOn] = useState(false);
+  const socket = useRef();
+  const scrollRef = useRef();
 
   useEffect(() => {
-
     fetch("https://minigram-backend.onrender.com/user").then(response => {
       return response.json();
     }).then(data => {
@@ -31,13 +33,67 @@ const messages = () => {
     }).catch(err => {
       console.log(err.message)
     })
-  }, [])
+  })
 
   // console.log(user)
+
+  // useEffect(() => {
+  //   const variab = JSON.parse(localStorage.getItem('user_info'));
+  //   console.log(variab)
+  //   setUser(variab)
+  // })
+
+  // useEffect(() =>
+  //   console.log(user)
+  // )
+
+  useEffect(() => {
+    fetch("https://minigram-backend.onrender.com/user").then(response => {
+      return response.json();
+    }).then(res => {
+      setFriendList(res)
+    }).catch(err => {
+      console.log(err.message)
+    })
+  })
+
+  // useEffect(() => {
+  //   friendList.map((data) => {
+  //     // setFriendNames(data)
+  //     // console.log(data.name)
+  //   })
+  // }, [user])
+
+  useEffect(() => {
+    socket.current = io("ws://minigram-backend.onrender.com:8900");
+    socket.current.on("getMessage", (data) => {
+      setArrivalMessage({
+        sender: data.senderId,
+        text: data.text,
+        createdAt: Date.now()
+      });
+    });
+  }, []);
+
+  useEffect(() => {
+    arrivalMessage &&
+      currentChat?.members.includes(arrivalMessage.sender) &&
+      setDms((prev) => [...prev, arrivalMessage]);
+  }, [arrivalMessage, currentChat]);
+
+  useEffect(() => {
+    socket.current.emit("addUser", user._id);
+    socket.current.on("getUsers", (users) => {
+      console.log(users)
+      //   setOnlineUsers(
+      //     user.followings.filter((f) => users.some((u) => u.userId === f))
+      //   );
+    });
+  }, [user]);
+
   useEffect(() => {
     const getConversations = async () => {
       getDM(user._id).then((res) => {
-        // console.log(res)
         setConversations(res.data);
       })
         .catch((err) =>
@@ -45,39 +101,14 @@ const messages = () => {
     }
     getConversations();
   }, [user])
-  console.log(conversations)
 
-  // const messaging = async () => {
-  //   // getMessages(currentChat?._id).then((res) => {
-  //   //     setdms(res.data);
-  //   //     console.log(dms);
-  //   // })
-  //   //     .catch((err) =>
-  //   //         console.log(err));
-  //   try {
-  //     const res = await getMessages(currentChat?._id)
-  //     const friendId = currentChat?.members.find((m) => m !== user._id);
-  //     fetchUser(friendId).then((res) => {
-  //       setFriend(res.data);
-  //     }).catch((err) => console.log(err))
-  //     console.log(res.data)
-  //     setDms(res.data.messages);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }
-  // useEffect(() => {
-  //   messaging();
-  // }, [currentChat])
-
-
+  // console.log(conversations)
 
   useEffect(() => {
     const getMsgs = async () => {
       try {
         const res = await getMessages(currentChat?._id)
-        // console.log(res)
-        setDms(res.data);
+        setDms(res.data.messages);
       } catch (err) {
         console.log(err);
       }
@@ -85,64 +116,45 @@ const messages = () => {
     getMsgs();
   }, [currentChat]);
 
-  console.log(dms)
+  // console.log(conversations)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const msg = {
+    const message = {
       sender: user._id,
       text: newMessage,
-      conversationId: currentChat._id,
-    };
+      conversationId: currentChat._id
+    }
+    console.log(message);
+    const receiverId = currentChat.members.find(
+      (member) => member !== user._id
+    );
+
+    socket.current.emit("sendMessage", {
+      senderId: user._id,
+      receiverId,
+      text: newMessage,
+    });
+
     try {
-      const res = await createMessage(msg);
+      console.log("HELLO")
+      const res = await createMessage(message)
+      console.log(res.data)
       setDms([...dms, res.data]);
-      // console.log(res.data)
       setNewMessage("");
     } catch (err) {
       console.log(err);
     }
-  };
+    setNewMessage("");
+  }
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   const message = {
-  //     sender: user._id,
-  //     text: newMessage,
-  //     conversationId: currentChat._id
-  //   }
-  //   console.log(message);
-  //   // console.log(e))
-  //   const receiverId = currentChat.members.find(
-  //     (member) => member !== user._id
-  //   );
-  //   // console.log(receiverId)
-  //   try {
-  //     createMessage(message.text, user._id)
-  //     const res = await getMessages(user._id)
-  //     // const res = await axios.post("https://minigram-backend.onrender.com/messages", message);
-  //     setDms([...dms, res]);
-  //     console.log(res)
-  //     setNewMessage("");
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  //   setNewMessage("");
-  // }
+  useEffect(() => {
+    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [dms]);
 
-  // useEffect(() => {
-  //   scrollRef.current?.scrollIntoView({ behavior: "smooth" });
-  // }, [messages]);
-
-  // console.log(currentChat)
-
-  // useEffect(() => {
-  //   {
-  //     dms?.map((message) => {
-  //       console.log(message)
-  //     })
-  //   }
-  // })
+  const search = (data) => {
+    return data?.name.toLowerCase().includes(searchName);
+  }
 
   return (
     <div className={styles.msg_body}>
@@ -156,7 +168,7 @@ const messages = () => {
         <div className={styles.pannel}>
           <div className={styles.msgp_add}>
             <div className={styles.heading}>Messages</div>
-          </div >
+          </div>
           <div className={styles.msgp_notif}>
             <div className={styles.messages}>
               {conversations.map((conversation) => (
@@ -164,14 +176,13 @@ const messages = () => {
                   setCurrentChat(conversation)
                 }}>
                   <div onClick={() => setMsgArea(true)} className={styles.message}>
-                    <Conversations conversation={conversation} currentUser={user} />
+                    <Conversations conversation={conversation} searchOn={searchOn} currentUser={user} />
                   </div>
                 </div>
               ))}
-
             </div>
           </div>
-          <AddCircleRoundedIcon className={styles.msgp_addBtn} />
+          <AddCircleRoundedIcon className={styles.msgp_addBtn} onClick={() => { setSearchModal(true), setSearchOn(true) }} />
         </div>
       </div>
 
@@ -180,8 +191,7 @@ const messages = () => {
         <div className={styles.pannel}>
           {
             msgArea ? (
-              <div>
-                <div className={styles.chatClose} onClick={() => setMsgArea(false)}>+</div>
+              <div className={styles.chatZone}>
                 <div className={styles.chatContents}>
                   {
                     currentChat ?
@@ -194,11 +204,12 @@ const messages = () => {
                           ))}
                         </div>
                         <div className={styles.chatBoxBottom}>
-                          <textarea className={styles.chatInput} placeholder="Text" onChange={(e) => setNewMessage(e.target.value)} value={newMessage} ></textarea>
+                          <input className={styles.chatInput} placeholder="Text" onChange={(e) => setNewMessage(e.target.value)} value={newMessage} />
                           <button className={styles.chatSendButton} onClick={(e) => handleSubmit(e)}>Send</button>
                         </div>
-                      </> : <span className={styles.noChat}>No Chat</span>}
+                      </> : null}
                 </div>
+                <div className={styles.chatClose} onClick={() => setMsgArea(false)}>+</div>
               </div>
             ) :
               <div className={styles.msgv_align}>
@@ -209,33 +220,31 @@ const messages = () => {
               </div>
           }
         </div>
-
       </div>
 
-
-      {/* {
-        createGroup ? (
+      {
+        searchModal ? (
           <div className={styles.bgmodal}>
             <div className={styles.modalcontents}>
-              <div className={styles.close} onClick={() => setCreateGroup(false)}>+</div>
-              <img src="https://richardmiddleton.me/comic-100.png" alt="" />
+              <div className={styles.close} onClick={() => { setSearchOn(false), setSearchModal(false) }}>+</div>
               <div>
-                <input className={styles.nameSearch} type="text" placeholder="Search names" />
-                <p className={styles.size}>No great matches!</p>
+                <input className={styles.nameSearch} type="text" placeholder="Search names" onChange={(e) => setSearchName(e.target.value)} />
                 <div className={styles.searchList}>
-                  {names.map(() => (
-                    <div>
+                  {friendList.map((conversation) => (
+                    <div onClick={() => {
+                      setCurrentChat(conversation)
+                    }}>
+                      <div onClick={() => { setMsgArea(true), setSearchModal(false) }} className={styles.message}>
+                        <Conversations conversation={search(conversation)} searchOn={searchOn} currentUser={user} />
+                      </div>
                     </div>
                   ))}
                 </div>
               </div>
-
-              <button className={styles.chatBtn}>Create Group</button>
             </div>
           </div>
         ) : null
-      } */}
-
+      }
     </div>
   )
 }

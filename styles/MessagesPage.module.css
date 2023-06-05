@@ -26,6 +26,22 @@
     display: flex;
 }
 
+.chatZone {
+    display: flex;
+
+}
+
+.chatClose {
+    position: relative;
+    top: -5rem;
+    z-index: 1;
+    left: 95%;
+    font-size: 5rem;
+    color: black;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
 .pannel {
     width: 100%;
     background-color: aliceblue;
@@ -57,7 +73,7 @@
     cursor: pointer;
     overflow-y: scroll;
     scroll-behavior: smooth;
-    height: 42rem;
+    height: 70%;
 }
 
 .msgp_messages {
@@ -65,6 +81,11 @@
     font-size: 2rem;
     color: #aa75ff;
     margin-left: 1rem;
+}
+
+.convoArea {
+    display: flex;
+    gap: 1.5rem;
 }
 
 .noChat {
@@ -100,24 +121,9 @@
     padding: 15px 32px;
     text-align: center;
     font-size: 2rem;
-    cursor: pointer;
+    cursor: auto;
     border-radius: 3rem;
     background-color: coral;
-}
-
-.msgv_button:hover {
-    background-color: chocolate;
-}
-
-.chatClose {
-    position: absolute;
-    top: 0;
-    z-index: 1;
-    right: 39rem;
-    font-size: 5rem;
-    color: black;
-    transform: rotate(45deg);
-    cursor: pointer;
 }
 
 .chatClose:hover {
@@ -222,8 +228,8 @@
 }
 
 .modalcontents {
-    height: 45rem;
-    width: 70rem;
+    height: 55rem;
+    width: 50rem;
     padding: 2rem;
     position: relative;
     border-radius: 3rem;
@@ -248,7 +254,7 @@
     width: 60%;
     height: 4rem;
     margin-top: 2rem;
-    margin-left: 10rem;
+    margin-left: 8rem;
     font-size: 2.5rem;
     border: none;
     background-color: whitesmoke;
@@ -256,8 +262,9 @@
 
 .searchList {
     overflow-y: scroll;
-    height: 20rem;
-    margin-top: -1.5rem;
+    height: 50vh;
+    margin-top: 2.4vh;
+    padding: 2vh;
 }
 
 .size {
@@ -384,6 +391,11 @@
         flex-wrap: nowrap;
     }
 
+    .chatClose {
+        /* top: -5rem; */
+        left: 0;
+    }
+
     .Icon {
         width: 26px;
         height: 26px;
@@ -421,6 +433,11 @@
     .msgv_align {
         padding-top: 60%;
 
+    }
+
+    .chatContents {
+        width: 80%;
+        height: 100%;
     }
 }
 
