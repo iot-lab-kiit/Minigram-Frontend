@@ -12,6 +12,7 @@ import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import TextsmsIcon from '@mui/icons-material/Textsms';
 import SendSharpIcon from '@mui/icons-material/SendSharp';
 import styles from '../styles/Cards.module.css';
+import styles1 from '../styles/Loader.module.css'
 import {fetchPosts,likePost} from '../pages/api/api';
 import {format} from 'timeago.js';
 
@@ -20,11 +21,18 @@ export const Cards = (req,res, gridbase) => {
   const [posts,setposts]=useState([])
   const [showComponent,setShowComponent]=useState(false);
   const [open, setOpen] = React.useState(false);
+  const [loading, setLoading] = useState(true); //  // Set initial loading state to true
   useEffect(()=>{
+    setLoading(true);
     fetchPosts().then((res)=>{
       console.log(res);
+      setLoading(false); // Set loading to false when data fetched
       setposts(res.data);
     })
+    .catch((error) => {
+      console.log(error);
+      setLoading(false); // Set loading state to false in case of an error
+    });
   },[])
   const handleClose = () => {
     setOpen(false);
@@ -37,7 +45,12 @@ export const Cards = (req,res, gridbase) => {
 
   return (
     <div className={styles.cardsContainer}>
-      {posts.map((post)=>(
+    { loading ? (
+      <div className={styles1.loaderContainer}>
+        <div className={styles1.customLoader}></div> 
+      </div>
+     ) : (
+     posts.map((post)=>(
       <Card className={styles.Card}>
         <div className={styles.header}>
           <Avatar className={styles.avatar} aria-label="recipe" src="http://t3.gstatic.com/licensed-image?q=tbn:ANd9GcRiII9371KsNrl7NJMJiH1MSBljoseqOwOyce6SHU1D63HY3ay0gowModGJ4DeZ6ZlORYbDeFMI7oKkQGA" />
@@ -75,8 +88,10 @@ export const Cards = (req,res, gridbase) => {
             </div>
          </div>
       </Card>
-      ))}
+      ))
+     )};
     </div>
+    
   );
 }
 

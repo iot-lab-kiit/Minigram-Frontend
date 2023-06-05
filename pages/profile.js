@@ -5,6 +5,7 @@ import { PfpUser} from "../components/PfpUser.js";
 import { fetchUser } from "../pages/api/api";
 import SettingsIcon from "@mui/icons-material/Settings";
 import styles from "../styles/profile.module.css";
+import styles1 from "../styles/Loader.module.css";
 import Image from "next/image";
 
 var p = 2;
@@ -22,6 +23,7 @@ var n = 4;
 
 const profile = () => {
   const [profile, setProfile] = useState([]);
+  const [loading, setLoading] = useState(true); // Set initial loading state to true
   let s = [];
   const fetchProfileData = () => {
     fetch("https://minigram-backend.onrender.com/post")
@@ -43,7 +45,12 @@ const profile = () => {
   return (
     <div>
       <Sidebar />
-      {profile.map((info, index) => {
+      {loading ? (
+        <div className={styles1.loaderContainer}>
+        <div className={styles1.customLoader}></div>
+      </div>
+    ) : (
+      profile.map((info, index) => {
         if (index == 0) {
           return (
             <div className={styles.head}>
@@ -85,8 +92,8 @@ const profile = () => {
             </div>
           );
         }
-      })}
-      )
+      })
+    )}
       <div className={styles.content}>
         <PfpCard />
       </div>
