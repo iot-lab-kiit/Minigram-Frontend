@@ -7,7 +7,7 @@ import { SearchResultsList } from "../components/SearchResultsList";
 import { TodayOnMinigram } from "../components/TodayOnMinigram";
 import { ExploreAll } from "../components/ExploreAll";
 
-const Explore = () => {
+const explore = () => {
   const [results, setResults] = useState([]);
 
   return (
