@@ -104,31 +104,21 @@
 .chatClose {
     position: absolute;
     top: 0;
-    right: 36rem;
+    z-index: 1;
+    right: 39rem;
     font-size: 5rem;
-    color: whitesmoke;
+    color: black;
     transform: rotate(45deg);
     cursor: pointer;
 }
 
 .chatClose:hover {
-    color: cyan;
-}
-
-.chatArea {
-    background-color: rgba(0, 0, 0, 0.5);
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    color: brown;
 }
 
 .chatContents {
     height: 100%;
-    width: 80rem;
+    width: 56.4%;
     padding: 2rem;
     position: absolute;
     border-radius: 3rem;
@@ -136,6 +126,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    top: 0;
 }
 
 .chatBoxTop {
