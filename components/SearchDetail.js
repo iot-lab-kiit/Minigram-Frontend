@@ -8,17 +8,17 @@ const SearchDetail = ({user}) => {
             {
                 user ?
                 <div className='flex flex-col gap-32 pt-[3rem]'>
-                <div className='flex justify-between items-center justify-center gap-5'>
+                <div className='flex justify-between items-center justify-center gap-10'>
                     <div className='w-1/3'>
                         <img className='w-[100%] h-[100%] rounded-full' src={ !user.creator.profilePic ?  "https://i.pinimg.com/originals/c3/1a/ef/c31aef8b9be6067c4a1a82a4334fcc65.png" : user.creator.profilePic}/>
                     </div>
                 <div>
                     <div className='flex  md:flex-row gap-10 justify-center items-center '>
                         <h1 className='text-4xl font-bold'>{user?.creator?.name}</h1>
-                        <span className='py-3 px-5 bg-purple-900 text-white font-bold rounded-full text-2xl'>Follow</span>
+                        <span className='py-4 px-5 bg-purple-900 text-white font-bold rounded-full text-2xl'>Follow</span>
                         <span className='py-3 px-5 border-2 border-purple-900 text-black font-bold rounded-full text-2xl'>Message</span>
                     </div>
-                    <div className='flex gap-20'>
+                    <div className='flex gap-20 pt-4'>
                         <h1 className='text-2xl'>{`${user.creator.posts.length} posts `}</h1>
                         <h1 className='text-2xl'>{`${user.creator.posts.length} likes `}</h1>
                     </div>

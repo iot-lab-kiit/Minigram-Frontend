@@ -5,7 +5,7 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 const searchD = [
-  { id: "i1", title: "culture", bg: "#11f07e" , img:'https://i.ytimg.com/vi/OOGcoQEhZlw/maxresdefault.jpg', },
+  { id: "i1", title: "culture", bg: "#11f07e" , img:'https://i.ytimg.com/vi/OOGcoQEhZlw/maxresdefault.jpg' },
   { id: "i2", title: "Business", bg: "#919191", img:'https://images.businessnewsdaily.com/app/uploads/2019/03/25101809/Write-a-business-plan-1.png', },
   { id: "i3", title: "Education", bg: "#1a948e" , img:'https://researchleap.com/wp-content/uploads/2022/02/Our_Best_Education_Articles_of_2020.jpeg', },
   { id: "i4", title: "Health", bg: "#6c315a" ,img:'https://cloudinary.hbs.edu/hbsit/image/upload/s--sFv3MZbN--/f_auto,c_fill,h_375,w_750,/v20200101/D730ED9CC0AF1A0C18B3499EF75E86D7.jpg'},
