@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Sidebar } from "../components/Sidebar.js";
 import { PfpCard } from "../components/PfpCard.js";
-import { PfpUser} from "../components/PfpUser.js";
-import { fetchUser } from "../pages/api/api";
+import { PfpUser } from "../components/PfpUser.js";
+import { fetchPost, fetchUser } from "../pages/api/api";
 import SettingsIcon from "@mui/icons-material/Settings";
 import styles from "../styles/profile.module.css";
 import Image from "next/image";
@@ -10,15 +10,6 @@ import Image from "next/image";
 var p = 2;
 var c = 0;
 var n = 4;
-
-
-// const [Id, setId] = useState([]);
-// useEffect(() => {
-//   fetchUser().then((res) => {
-//     console.log(res);
-//     setId(res.data);
-//   });
-// }, []);
 
 const profile = () => {
   const [profile, setProfile] = useState([]);
@@ -39,7 +30,16 @@ const profile = () => {
   let p = [];
 
   p = profile.map((info) => console.log(info.creator.username));
+  const [id, setId] = useState([]);
+  useEffect(() => {
+    fetchUser().then((resp) => {
+      console.log(resp);
+      setId(resp);
+    });
+  });
 
+  console.log("id");
+  console.log(id);
   return (
     <div>
       <Sidebar />
@@ -53,7 +53,6 @@ const profile = () => {
                 ></img>
               </div>
               <div className={styles.bio}>
-
                 {/* <div className={styles.edit}>
                   
                   <button className={styles.editb}>edit profile</button>
@@ -61,15 +60,14 @@ const profile = () => {
                 </div> */}
                 {/* <PfpUser /> */}
                 <div className={styles.flex}>
-                <span>{info.creator.username}</span>
-                {profile.name!=info.creator.username && <PfpUser/>}
+                  <span>{info.creator.username}</span>
+                  {profile.name != info.creator.username && <PfpUser />}
                 </div>
-                {console.log("Hello")}
-                {console.log(profile.name)}
+                {/* {console.log("Hello")} */}
+                {/* {console.log(info.creator.username)} */}
                 <div className={styles.data}>
                   <div className={styles.posts}>
-                    <div className={styles.bo}>2</div>{" "}
-                    posts
+                    <div className={styles.bo}>2</div> posts
                   </div>
                   <div className={styles.conex}>
                     <div className={styles.bo}>{c}</div> connections
