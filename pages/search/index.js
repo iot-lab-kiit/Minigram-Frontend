@@ -4,6 +4,7 @@ import classes from '../../styles/Search.module.css';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+
 const searchD = [
   { id: "i1", title: "culture", bg: "#11f07e" , img:'https://i.ytimg.com/vi/OOGcoQEhZlw/maxresdefault.jpg' },
   { id: "i2", title: "Business", bg: "#919191", img:'https://images.businessnewsdaily.com/app/uploads/2019/03/25101809/Write-a-business-plan-1.png', },

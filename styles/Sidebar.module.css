@@ -35,13 +35,18 @@
     padding: 18px 16px;
     box-sizing: border-box;
 }
-.sideContain:hover{
-    background-color: rgb(199, 202, 199);
+.sideContain.active {
+    background-color: rgb(199, 202, 199); 
     justify-content: flex-end;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
-    
-}
+  }
+  .sideContain:hover{
+    background-color: rgb(199, 202, 199); 
+    justify-content: flex-end;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+  }
 .accountButton{
     display:flex;
     align-items: center;
@@ -156,7 +161,7 @@
         margin: 14px 0px;
     }
 }
-@media screen and (max-width:412px) {
+@media screen and (max-width:550px) {
     .menuContainer {
         z-index: 6;
         width: 100%;
@@ -200,6 +205,7 @@
         padding: 0px 16px 6px 16px;
         box-sizing: border-box;
     }
+    
     .Login{
         cursor: pointer;
         border: 0;
@@ -214,8 +220,11 @@
         display: none;
     }
     .userbutton{
-        width:40px;
-        height:40px;  
+        /* width:40px;
+        height:40px;   */
         display: none;
+    }
+    .accountButton{
+        display:none;
     }
 }

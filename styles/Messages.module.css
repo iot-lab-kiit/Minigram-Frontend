@@ -10,14 +10,18 @@
     right: 0;
     top:0;
     height: 100%;
+    overflow: scroll;
 }
 
 .messages {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: flex-start;
     width: 100%;
     flex-wrap: wrap;
+    overflow: scroll;
+    max-height: 400px;
+    overflow-x:hidden ;
 }
 
 .heading {
