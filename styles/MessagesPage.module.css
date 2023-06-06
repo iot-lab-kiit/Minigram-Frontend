@@ -22,8 +22,23 @@
     order: 2;
     width: 24.5%;
     background-color: aliceblue;
-    height: 100vh;
+    height: 100%;
     display: flex;
+}
+
+.chatZone {
+    display: flex;
+}
+
+.chatClose {
+    position: relative;
+    top: -5rem;
+    z-index: 1;
+    left: 97%;
+    font-size: 5rem;
+    color: black;
+    transform: rotate(45deg);
+    cursor: pointer;
 }
 
 .pannel {
@@ -57,7 +72,7 @@
     cursor: pointer;
     overflow-y: scroll;
     scroll-behavior: smooth;
-    height: 42rem;
+    height: 70%;
 }
 
 .msgp_messages {
@@ -65,6 +80,19 @@
     font-size: 2rem;
     color: #aa75ff;
     margin-left: 1rem;
+}
+
+.convoArea {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.noChat {
+    position: absolute;
+    top: 10%;
+    font-size: 5rem;
+    color: black;
+    text-align: center;
 }
 
 .msgp_Icon {
@@ -92,24 +120,9 @@
     padding: 15px 32px;
     text-align: center;
     font-size: 2rem;
-    cursor: pointer;
+    cursor: auto;
     border-radius: 3rem;
     background-color: coral;
-}
-
-.msgv_button:hover {
-    background-color: chocolate;
-}
-
-.chatClose {
-    position: absolute;
-    top: 0;
-    z-index: 1;
-    right: 39rem;
-    font-size: 5rem;
-    color: black;
-    transform: rotate(45deg);
-    cursor: pointer;
 }
 
 .chatClose:hover {
@@ -122,7 +135,7 @@
     padding: 2rem;
     position: absolute;
     border-radius: 3rem;
-    background-color: whitesmoke;
+    background-color: aliceblue;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -214,8 +227,8 @@
 }
 
 .modalcontents {
-    height: 45rem;
-    width: 70rem;
+    height: 55rem;
+    width: 50rem;
     padding: 2rem;
     position: relative;
     border-radius: 3rem;
@@ -240,7 +253,7 @@
     width: 60%;
     height: 4rem;
     margin-top: 2rem;
-    margin-left: 10rem;
+    margin-left: 8rem;
     font-size: 2.5rem;
     border: none;
     background-color: whitesmoke;
@@ -248,8 +261,9 @@
 
 .searchList {
     overflow-y: scroll;
-    height: 20rem;
-    margin-top: -1.5rem;
+    height: 50vh;
+    margin-top: 2.4vh;
+    padding: 2vh;
 }
 
 .size {
@@ -356,11 +370,14 @@
         margin-top: -1.5rem;
     }
 
+
     .chatBtn {
         width: 85%;
         height: 3rem;
         font-size: 2rem;
     }
+
+
 
     .heading {
         font-size: 19px;
@@ -374,6 +391,11 @@
         gap: 9px;
         padding: 14px 4px;
         flex-wrap: nowrap;
+    }
+
+    .chatClose {
+        /* top: -5rem; */
+        left: 0;
     }
 
     .Icon {
@@ -413,6 +435,16 @@
     .msgv_align {
         padding-top: 60%;
 
+    }
+
+    .searchList {
+        height: 41vh;
+        margin-top: 2.4vh;
+    }
+
+    .chatContents {
+        width: 80%;
+        height: 100vh;
     }
 }
 
