@@ -19,7 +19,6 @@
     justify-content: flex-start;
     width: 100%;
     flex-wrap: wrap;
-    overflow: scroll;
     max-height: 400px;
     overflow-x:hidden ;
 }
