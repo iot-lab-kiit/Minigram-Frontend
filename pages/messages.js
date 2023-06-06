@@ -1,20 +1,121 @@
 import React from "react";
 import { Sidebar } from '../components/Sidebar.js'
 import styles from '../styles/MessagesPage.module.css';
-import Avatar from '@mui/material/Avatar';
+import axios from "axios";
 import { useState, useEffect } from "react";
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import ChatSection from "../components/ChatSection.jsx";
+import Conversations from "../components/Conversations.jsx";
+import { useRef } from "react";
+import { getDM, fetchUser, getMessages, createMessage } from "./api/api.js";
 
 const messages = () => {
 
-  const [conversations, setConversations] = useState([]);
-  const number = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  const names = [1, 2, 3, 4];
-  const [showModal, setShowModal] = useState(false);
   const [createGroup, setCreateGroup] = useState(false);
-  const [msgArea, setMsgArea] = useState(true);
+  const [msgArea, setMsgArea] = useState(false);
+  const [user, setUser] = useState([]);
+  const [currentChat, setCurrentChat] = useState(null);
+  const [messages, setMessages] = useState(null);
+  const [newMessage, setNewMessage] = useState("");
+  const scrollRef = useRef();
+  const [conversations, setConversations] = useState([]);
+  const [friend, setFriend] = useState(null);
+  const [dms, setDms] = useState([]);
+
+  useEffect(() => {
+
+    fetch("https://minigram-backend.onrender.com/user").then(response => {
+      return response.json();
+    }).then(data => {
+      setUser(data[0]);
+    }).catch(err => {
+      console.log(err.message)
+    })
+  }, [])
+
+  // console.log(user)
+  useEffect(() => {
+    const getConversations = async () => {
+      getDM(user._id).then((res) => {
+        // console.log(res)
+        setConversations(res.data);
+      })
+        .catch((err) =>
+          console.log(err));
+    }
+    getConversations();
+  }, [user])
+  console.log(conversations)
+
+  const messaging = async () => {
+    // getMessages(currentChat?._id).then((res) => {
+    //     setdms(res.data);
+    //     console.log(dms);
+    // })
+    //     .catch((err) =>
+    //         console.log(err));
+    try {
+      const res = await getMessages(currentChat?._id)
+      const friendId = currentChat?.members.find((m) => m !== user._id);
+      fetchUser(friendId).then((res) => {
+        setFriend(res.data);
+      }).catch((err) => console.log(err))
+      console.log(res.data)
+      setDms(res.data.messages);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  useEffect(() => {
+    messaging();
+  }, [currentChat])
+  // useEffect(() => {
+  //   const getMessages = async () => {
+  //     try {
+  //       const res = await axios.get("/messages/" + currentChat?._id)
+  //       console.log(res)
+  //       // setMessages(res.data);
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
+  //   getMessages();
+  // }, [currentChat]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const message = {
+      sender: user._id,
+      text: newMessage,
+      conversationId: currentChat._id,
+    };
+    try {
+      const res = await axios.post("/messages", message);
+      setMessages([...messages, res.data]);
+      setNewMessage("");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const message = {
+  //     sender: user._id,
+  //     text: newMessage,
+  //     conversationId: currentChat._id
+  //   }
+  //   console.log(message);
+  //   const receiverId = currentChat.members.find(
+  //     (member) => member !== user._id
+  //   );
+  // }
+
+
+  useEffect(() => {
+    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   return (
     <div className={styles.msg_body}>
@@ -32,16 +133,16 @@ const messages = () => {
           </div >
           <div className={styles.msgp_notif}>
             <div className={styles.messages}>
-              {number.map(() => (
-                <div onClick={() => setMsgArea(true)} className={styles.message}>
-                  <div >
-                    <Avatar className={styles.Icon} alt="Remy Sharp" src="https://m.media-amazon.com/images/M/MV5BMTA2OTU0MjEwMDVeQTJeQWpwZ15BbWU4MDIzNjU1MTAx._V1_.jpg" ></Avatar> </div>
-                  <div className={styles.message_name}>
-                    <div className={styles.Name}>Harry Kenvic</div>
-                    <div className={styles.msg_id}>@Harry</div>
+              {conversations.map((conversation) => (
+                <div onClick={() => {
+                  setCurrentChat(conversation)
+                }}>
+                  <div onClick={() => setMsgArea(true)} className={styles.message}>
+                    <Conversations conversation={conversation} currentUser={user} />
                   </div>
                 </div>
               ))}
+
             </div>
           </div>
           <AddCircleRoundedIcon className={styles.msgp_addBtn} onClick={() => setCreateGroup(true)} />
@@ -52,61 +153,40 @@ const messages = () => {
       <div className={styles.msg_view}>
         <div className={styles.msg_rotate} />
         <div className={styles.pannel}>
-          <div className={styles.msgv_align}>
-            <SendRoundedIcon className={styles.msgv_icn} />
-            <h5 className={styles.msgp_Msg}>Your Messages</h5>
-            <p className={styles.msgp_para}>Start your chat with just one click!</p>
-            <button className={styles.msgv_button} onClick={() => setShowModal(true)}>Send Messages</button>
-          </div>
+          {
+            msgArea ? (
+              <div>
+                <div className={styles.chatClose} onClick={() => setMsgArea(false)}>+</div>
+                <div className={styles.chatContents}>
+                  {
+                    currentChat ?
+                      <>
+                        <div className={styles.chatBoxTop}>
+                          {dms?.map((message) => (
+                            <div ref={scrollRef}>
+                              <ChatSection message={message} own={message.sender === user._id} />
+                            </div>
+                          ))}
+                        </div>
+                        <div className={styles.chatBoxBottom}>
+                          <textarea className={styles.chatInput} placeholder="Text" onChange={(e) => setNewMessage(e.target.value)} value={newMessage} ></textarea>
+                          <button className={styles.chatSendButton} onClick={(e) => handleSubmit(e)}>Send</button>
+                        </div></> : <span> No Chat</span>}
+                </div>
+              </div>
+            ) :
+              <div className={styles.msgv_align}>
+                <SendRoundedIcon className={styles.msgv_icn} />
+                <h5 className={styles.msgp_Msg}>Your Messages</h5>
+                <p className={styles.msgp_para}>Start your chat with just one click!</p>
+                <button className={styles.msgv_button}>Send Messages</button>
+              </div>
+          }
         </div>
 
       </div>
-      {
-        msgArea ? (
-          <div className={styles.chatArea}>
-            <div className={styles.chatClose} onClick={() => setMsgArea(false)}>+</div>
-            <div className={styles.chatContents}>
-              <div className={styles.chatBoxTop}>
-                <ChatSection />
-                <ChatSection own={true} />
-                <ChatSection />
-                <ChatSection />
-                <ChatSection />
-                <ChatSection />
-                <ChatSection />
 
-              </div>
-              <div className={styles.chatBoxBottom}>
-                <textarea className={styles.chatInput} placeholder="Text" ></textarea>
-                <button className={styles.chatSendButton}>Send</button>
-              </div>
-            </div>
-          </div>
-        ) : null
-      }
-      {
-        showModal ? (
-          <div className={styles.bgmodal}>
-            <div className={styles.modalcontents}>
-              <div className={styles.close} onClick={() => setShowModal(false)}>+</div>
-              <img src="https://richardmiddleton.me/comic-100.png" alt="" />
 
-              <div>
-                <input className={styles.nameSearch} type="text" placeholder="What's the name" />
-                <p className={styles.size}>No great matches!</p>
-                <div className={styles.searchList}>
-                  {names.map(() => (
-                    <div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <button className={styles.chatBtn}>Let's Chat</button>
-            </div>
-          </div>
-        ) : null
-      }
       {
         createGroup ? (
           <div className={styles.bgmodal}>
@@ -134,5 +214,4 @@ const messages = () => {
   )
 }
 
-export default messages
-
+export default messages;

@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { signup } from "../pages/api/api";
+import {signup} from "../redux/actions/auth";
 import styles from "../styles/Login.module.css";
-function SignUp() {
+import { useRouter } from 'next/router';
+import { useDispatch } from 'react-redux';
+
+const SignUp = () => {
+  const dispatch = useDispatch();
+  const router = useRouter();
+
   const [signUpData, setSignUpData] = useState({
     email: "",
     name: "",
@@ -17,13 +23,10 @@ function SignUp() {
       [name]: value,
     }));
   }
-  // function handleSubmit(e) {
-  //   e.preventDefault();
-  //   signup(signUpData).then()
 
-  // }
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSignUpData({ ...signUpData });
     if (
       signUpData.email === "" ||
       signUpData.username === "" ||
@@ -31,18 +34,11 @@ function SignUp() {
       signUpData.name === ""
     ) {
       alert("Please fill the required details");
+    }else{
+      dispatch(signup(signUpData));
+      router.push('/');
     }
-    setSignUpData({...signUpData});
-    console.log(signUpData);
-    await signup(signUpData)
-      .then((res) => {
-        console.log(res.data);
-        localStorage.setItem('token',res.data);
-        alert("Sign up sucessfully");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+
   };
   return (
     <div className={styles.miniGramSignUp}>

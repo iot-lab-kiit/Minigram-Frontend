@@ -3,9 +3,9 @@ import { Sidebar } from '../../components/Sidebar'
 import classes from '../../styles/Search.module.css';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { useState } from 'react';
-import { useRouteError } from 'react-router-dom';
 import { useRouter } from 'next/router';
-const searchD = [
+
+ export const searchD = [
     {id:'i1', title:'culture', bg:'#11f07e'},
     {id:'i2', title:'Bussiness', bg:'#919191'},
     {id:'i3', title:'Education', bg:'#1a948e'},
@@ -33,18 +33,10 @@ const Search = () => {
     const searchInputChnageHandler=  (e) => {
         setUserInp(e.target.value)
     }
-    console.log(userInp)
-    
-    const searchHandler = async () => {
-
-        
-        
-    }
     
     const submitHandler = (e) => {
         
         e.preventDefault();
-        searchHandler();
         router.push(`/search/${userInp}`);
     }
 
