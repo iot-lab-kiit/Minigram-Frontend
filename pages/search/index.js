@@ -8,7 +8,7 @@ import { fetchPosts } from "../api/api";
 import Link from "next/link";
 
 const Search = () => {
-  const [userInp, setUserInp] = useState("");
+  const [userInp, setUserInp] = useState('');
   const [total, setTotal] = useState([]);
   const [suggestedUsernames, setSuggestedUsernames] = useState([]);
 
