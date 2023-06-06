@@ -39,15 +39,6 @@ const SignUp = () => {
       router.push('/');
     }
 
-    // console.log(signUpData);
-    // await signup(signUpData)
-    //   .then((res) => {
-    //     console.log(res);
-    //     alert("Sign up sucessfully");
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
   };
   return (
     <div className={styles.miniGramSignUp}>

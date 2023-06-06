@@ -5,10 +5,11 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { Card } from '@mui/material';
 import CardMedia from '@mui/material/CardMedia';
 export const Messages = () => {
-  const number=[1,2,3,4,5];
+  const number=[1,2,3,4,5,6,7,8,9];
   return (
     <div className={styles.messageContainer}>
       <div className={styles.heading}>Messages</div>
+      <div className={styles.onlymessagecontainer}>
       <div className={styles.messages}>
         {number.map(()=>(
         <div className={styles.message}>
@@ -21,6 +22,7 @@ export const Messages = () => {
          
         </div>
          ))}
+         </div>
       </div>
       <div>  <AddCircleOutlineIcon  className={styles.AddCircleIcon}></AddCircleOutlineIcon></div>
       <div className={styles.recent_text}>Based on your Recent Activity</div>
