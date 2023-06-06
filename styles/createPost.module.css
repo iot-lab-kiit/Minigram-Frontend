@@ -69,9 +69,10 @@
   width: 100%;
 }
 .miniGramCreatePostUploadIcon {
-  width: 27vw;
-  height: 41vh;
+  width: 20vw;
+  height: 20vh;
   color: #a974ff;
+  cursor: pointer;
 }
 .miniGramUploadButton {
   width: 12rem;
@@ -87,9 +88,12 @@
   margin-top: 1rem;
   padding: 0.8rem 1.2rem;
 }
-.miniGramCreatePostInnerContainer h1 {
+.miniGramCreatePostInnerContainer {
   font-size: 2.5vw;
   text-align: center;
+  border: 2px dashed rgb(169, 116, 255);
+  border-radius: 12px;
+  padding: 40px 20px;
 }
 .tagsInput {
   display: flex;
@@ -161,6 +165,11 @@
 .multitags p{
   font-size: 1.3rem;
   margin-left:0.5rem;
+}
+.filebase{
+  background: green;
+  width: 40px;
+  height: 40px;
 }
 
 @media screen and (max-width: 567px) {
