@@ -1,12 +1,11 @@
 .pfp img {
   border-radius: 500px;
   position: relative;
-  /* margin-left: 30px; */
-
+  margin-left: 60px;
   height: 20vh;
   width: 20vh;
-  min-width: 60px;
-  min-height: 60px;
+  min-width: 90px;
+  min-height: 90px;
   border: 3px solid #a974ff;
   /* border:3px solid #8b498c; */
   /* border-image-source:  linear-gradient(to left,#ffffff,#8b498c); */
@@ -60,7 +59,7 @@
   background-color: #a974ff;
   color: white;
   padding: 0 30px 0 30px;
-  height: 4rem;
+  height: 5rem;
   border: transparent;
   font-size: 1.5rem;
   border-radius: 18px;
@@ -136,13 +135,12 @@
 
 .photo {
   /* background-color: #a974ff44; */
-  width: 300px;
-  height: 400x;
-  min-width: 190px;
-  min-height: 290px;
+  width: 320px;
+  height:500x;
+  min-width: 320px;
+  min-height: 300px;
   display: flex;
   justify-content: center;
-  background-image: url("https://i.scdn.co/image/ab67706c0000da84bfb952f89350d7c8d6fae332");
   box-shadow: 0 7px 8px 0 rgba(0, 0, 0, 0.673),
     0 6px 30px 0 rgba(73, 72, 72, 0.19);
   border-radius: 8px;
@@ -165,6 +163,12 @@
 
   .head {
     left: 0px;
+  }
+
+  .photo
+  {
+    width: 480px;
+   height:500px;
   }
 }
 
