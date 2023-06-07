@@ -4,7 +4,7 @@ import { fetchPosts } from '../api/api';
 
 
 const searchDetailPage =  (props) => {
-
+    // console.log(props)
   return (
         <div>
         <SearchDetail  user={props.user}/>

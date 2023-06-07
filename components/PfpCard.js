@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/profile.module.css";
+import styles1 from "../styles/Loader.module.css";
 import CommentIcon from "@mui/icons-material/Comment";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { likePost, fetchPost, fetchUser } from "../pages/api/api";
@@ -16,8 +17,8 @@ export const PfpCard = (props) => {
       .then((resp) => {
         setPost(resp.data);
       })
-      .catch((err) => {
-        console.log("error in fetching posts",err);
+      .then((data) => {
+        setUsers(data);
       });
   });
 
@@ -25,8 +26,8 @@ export const PfpCard = (props) => {
 
   return (
     <div className={styles.grid}>
-      {posts.map((user) => (
-        <>
+      {users.map((user) => (
+        <div>
           <div className={styles.photo}>
             <div className={styles.details}>
               <FavoriteIcon fontSize="large" style={{ color: "white" }} />{" "}
@@ -35,8 +36,9 @@ export const PfpCard = (props) => {
               {/* <p> {userComments.length} </p> */}
             </div>
           </div>
-        </>
+        </div>
       ))}
+      ;
     </div>
   );
 };

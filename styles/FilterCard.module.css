@@ -1,0 +1,80 @@
+.cardsContainer{
+    width: 50%;
+    padding: 20px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height:fit-content;
+
+}
+.Card{
+    background-color: white;
+    width: 100%;
+    max-width: 200px;
+    max-height: 300px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    margin:5px;
+} 
+.post {
+    height: 180px;
+    width:150px;
+    background: rgb(170, 170, 170);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+.iconContainer {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 3px 0px;
+}
+.icon {
+    color: rgb(51, 50, 50);
+    font-size: 14px;
+}
+.caption{
+    font-size: 12px;
+    font-weight: 550;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3px;
+}
+.footerContainer {
+    display: flex;
+    flex-direction: column;
+}
+.buttonContainer{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1.5px 0px;
+    margin-top: 5px;
+}
+.button{
+    background-color:#A974FF;;
+    cursor: pointer;
+    font-size: 10px;
+    width:40px;
+    height:15px;
+    color:black;
+    box-shadow: 2px;
+}
+.button:hover{
+    background-color: white;
+}
+.header {
+    display: flex;
+    flex-direction: row;
+}
+.time {
+    font-size: 10px;
+    display: flex;
+}
+.likesComments{
+    font-size: 10px;
+    color:rgb(80, 79, 79);
+}
