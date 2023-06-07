@@ -5,7 +5,7 @@ import { PfpUser } from "../components/PfpUser.js";
 import { Alert } from "@mui/material";
 import { fetchUser ,fetchPost} from "../pages/api/api";
 import styles from "../styles/profile.module.css";
-import styles1 from "../styles/Loader.module.css";
+
 
 let p = [];
 const profile = () => {
@@ -25,7 +25,7 @@ const profile = () => {
     const user = JSON.parse(localStorage.getItem("user_info"));
     // console.log(user);
     fetchPost(user.result._id).then((resp) => {
-      setPost(resp.data);
+      setPosts(resp.data);
     })
     .catch(err=> {
     console.log("error");}
