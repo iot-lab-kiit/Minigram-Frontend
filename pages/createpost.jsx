@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 // import TagsInput from "../components/TagsInput";
 import Image from "next/image";
 import styles from "../styles/createPost.module.css";
+import styles1 from "../styles/Loader.module.css";
 import { useRouter } from "next/router";
 import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
 import { Box, TextField, MenuItem } from "@mui/material";
@@ -37,6 +38,7 @@ function createpost() {
   const [image, setImage] = useState();
   const [filter, setFilter] = useState("");
   const [caption, setCaption] = useState("");
+  const [loading, setLoading] = useState(false)
   // console.log(tags);
   // const handleTagChange = (event) => {
   //   const value = event.target.value;
@@ -62,7 +64,9 @@ function createpost() {
     console.log(caption);
     console.log(image);
     console.log(filter);
-    router.push("/");
+    router.push("/").then(() => {
+      setLoading(false);
+    });
 
   }
   const [tags, setTags] = React.useState([]);
@@ -78,10 +82,15 @@ function createpost() {
   };
   return (
     <div className={styles.miniGramCreatePost}>
-      <div className={styles.miniGramCreatePostOuterContainer}>
-        <div className={styles.miniGramCreatePostInner1Container}>
-          <div className={styles.miniGramCreatePostForm}>
-            {/* <Box width="17.36vw" className={styles.box}>
+      {loading ? (
+        <div className={styles1.loaderContainer}>
+          <div className={styles1.customLoader}></div>
+        </div>
+      ) :
+        <div className={styles.miniGramCreatePostOuterContainer}>
+          <div className={styles.miniGramCreatePostInner1Container}>
+            <div className={styles.miniGramCreatePostForm}>
+              {/* <Box width="17.36vw" className={styles.box}>
               <CssTextField
                 label="Tags"
                 select
@@ -108,116 +117,117 @@ function createpost() {
                 <MenuItem value="#anime">#anime</MenuItem>
               </CssTextField>
             </Box> */}
-            {/* <TagsInput
+              {/* <TagsInput
               selectedTags={selectedTags}
               tags={["Nodejs", "MongoDB"]}
             /> */}
-            <Box width="17.36vw" className={styles.box}>
-              <CssTextField
-                id="standard-multiline-static"
-                label="Caption"
-                multiline
-                rows={4}
-                variant="standard"
-                fullWidth
-                value={caption}
-                helperText="Enter the snappy caption😎"
-                onChange={(e) => {
-                  setCaption(e.target.value);
-                }}
-              />
-            </Box>
-            <Box width="17.36vw" className={styles.box}>
-              <CssTextField
-                label="Filters"
-                select
-                size="small"
-                color="secondary"
-                variant="standard"
-                value={filter}
-                defaultValue=""
-                onChange={handleFilterChange}
-                fullWidth
-              >
-                <MenuItem value="Culture">Culture</MenuItem>
-                <MenuItem value="Business">Business</MenuItem>
-                <MenuItem value="Education">Education</MenuItem>
-                <MenuItem value="Health">Health</MenuItem>
-                <MenuItem value="News">News</MenuItem>
-                <MenuItem value="Science">Science</MenuItem>
-                <MenuItem value="Religion">Religion</MenuItem>
-                <MenuItem value="Dev">Dev</MenuItem>
-                <MenuItem value="Sports">Sports</MenuItem>
-                <MenuItem value="Crime">Crime</MenuItem>
-              </CssTextField>
-            </Box>
-            <div className={styles.multitags}>
-            <div className={styles.tagsInput}>
-              <ul className={styles.tags}>
-                {tags.map((tag, index) => (
-                  <li key={index} className={styles.tag}>
-                    <span className={styles.tagTitle}>{tag}</span>
-                    <span
-                      className={styles.tagcloseicon}
-                      onClick={() => removeTags(index)}
-                    >
-                      x
-                    </span>
-                  </li>
-                ))}
-              </ul>
-              <input
-                type="text"
-                onKeyUp={(event) =>
-                  event.key === "Enter" ? addTags(event) : null
-                }
-                placeholder="Press enter to add tags"
-              />
-            </div>
-            <p>Spotlights🔦</p>
-            </div>  
-          </div>
-        </div>
-        <div className={styles.miniGramCreatePostInner2Container}>
-          <div
-            className={styles.miniGramCreatePostContainer}
-            onClick={handleImageClick}
-          >
-            {image ? (
-              <Image
-                alt=""
-                src={URL.createObjectURL(image)}
-                height="200"
-                width="200"
-                style={{
-                  height: "auto",
-                  width: "24.027vw",
-                  objectFit: "contain",
-                  position: "relative",
-                }}
-              />
-            ) : (
-              <div className={styles.miniGramCreatePostInnerContainer}>
-                <h1>Choose an image</h1>
-                <FileUploadOutlinedIcon
-                  className={styles.miniGramCreatePostUploadIcon}
+              <Box width="17.36vw" className={styles.box}>
+                <CssTextField
+                  id="standard-multiline-static"
+                  label="Caption"
+                  multiline
+                  rows={4}
+                  variant="standard"
+                  fullWidth
+                  value={caption}
+                  helperText="Enter the snappy caption😎"
+                  onChange={(e) => {
+                    setCaption(e.target.value);
+                  }}
                 />
+              </Box>
+              <Box width="17.36vw" className={styles.box}>
+                <CssTextField
+                  label="Filters"
+                  select
+                  size="small"
+                  color="secondary"
+                  variant="standard"
+                  value={filter}
+                  defaultValue=""
+                  onChange={handleFilterChange}
+                  fullWidth
+                >
+                  <MenuItem value="Culture">Culture</MenuItem>
+                  <MenuItem value="Business">Business</MenuItem>
+                  <MenuItem value="Education">Education</MenuItem>
+                  <MenuItem value="Health">Health</MenuItem>
+                  <MenuItem value="News">News</MenuItem>
+                  <MenuItem value="Science">Science</MenuItem>
+                  <MenuItem value="Religion">Religion</MenuItem>
+                  <MenuItem value="Dev">Dev</MenuItem>
+                  <MenuItem value="Sports">Sports</MenuItem>
+                  <MenuItem value="Crime">Crime</MenuItem>
+                </CssTextField>
+              </Box>
+              <div className={styles.multitags}>
+                <div className={styles.tagsInput}>
+                  <ul className={styles.tags}>
+                    {tags.map((tag, index) => (
+                      <li key={index} className={styles.tag}>
+                        <span className={styles.tagTitle}>{tag}</span>
+                        <span
+                          className={styles.tagcloseicon}
+                          onClick={() => removeTags(index)}
+                        >
+                          x
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                  <input
+                    type="text"
+                    onKeyUp={(event) =>
+                      event.key === "Enter" ? addTags(event) : null
+                    }
+                    placeholder="Press enter to add tags"
+                  />
+                </div>
+                <p>Spotlights🔦</p>
               </div>
-            )}
-
-            <input type="file" onChange={handleImageChange} ref={inputRef} />
+            </div>
           </div>
-          {image && (
-            <button
-              onClick={handleSubmit}
-              type="submit"
-              className={styles.miniGramUploadButton}
+          <div className={styles.miniGramCreatePostInner2Container}>
+            <div
+              className={styles.miniGramCreatePostContainer}
+              onClick={handleImageClick}
             >
-              Upload
-            </button>
-          )}
+              {image ? (
+                <Image
+                  alt=""
+                  src={URL.createObjectURL(image)}
+                  height="200"
+                  width="200"
+                  style={{
+                    height: "auto",
+                    width: "24.027vw",
+                    objectFit: "contain",
+                    position: "relative",
+                  }}
+                />
+              ) : (
+                <div className={styles.miniGramCreatePostInnerContainer}>
+                  <h1>Choose an image</h1>
+                  <FileUploadOutlinedIcon
+                    className={styles.miniGramCreatePostUploadIcon}
+                  />
+                </div>
+              )}
+
+              <input type="file" onChange={handleImageChange} ref={inputRef} />
+            </div>
+            {image && (
+              <button
+                onClick={() => { setLoading(true), handleSubmit }}
+                type="submit"
+                className={styles.miniGramUploadButton}
+              >
+                Upload
+              </button>
+            )}
+          </div>
         </div>
-      </div>
+      }
     </div>
   );
 }
