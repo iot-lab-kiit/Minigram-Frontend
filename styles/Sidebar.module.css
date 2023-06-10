@@ -35,13 +35,18 @@
     padding: 18px 16px;
     box-sizing: border-box;
 }
-.sideContain:hover{
-    background-color: rgb(199, 202, 199);
+.sideContain.active {
+    background-color: rgb(199, 202, 199); 
     justify-content: flex-end;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
-    
-}
+  }
+  .sideContain:hover{
+    background-color: rgb(199, 202, 199); 
+    justify-content: flex-end;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+  }
 .accountButton{
     display:flex;
     align-items: center;

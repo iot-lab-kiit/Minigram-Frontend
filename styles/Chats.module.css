@@ -38,3 +38,15 @@
     background-color: lightgray;
     color: black;
 }
+
+@media screen and (max-width:412px) {
+    .messageImg {
+        height: 4rem;
+        width: 4rem;
+    }
+
+    .chatText {
+        max-width: 10rem;
+        padding: 1rem;
+    }
+}

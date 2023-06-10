@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Avatar } from '@mui/material';
 import { fetchUser } from '../pages/api/api';
 
-export default function Conversations({ conversation, currentUser }) {
+export default function Conversations({ conversation, searchOn, currentUser }) {
 
     const [friend, setFriend] = useState(null);
 
@@ -15,19 +15,16 @@ export default function Conversations({ conversation, currentUser }) {
                 setFriend(res.data);
             }).catch((err) => console.log(err))
         }
-
     }, [conversation, currentUser])
 
     return (
-        <div>
-            {/* <div onClick={() => setMsgArea(true)} className={styles.message}> */}
+        <div className={styles.convoArea} >
             <div>
-                <Avatar className={styles.Icon} alt="Remy Sharp" src="https://m.media-amazon.com/images/M/MV5BMTA2OTU0MjEwMDVeQTJeQWpwZ15BbWU4MDIzNjU1MTAx._V1_.jpg" ></Avatar> </div>
+                <Avatar className={styles.Icon} alt="Remy Sharp" src={friend?.profilePic} />
+            </div>
             <div className={styles.message_name}>
                 <div className={styles.Name}>{friend?.name}</div>
-                {/* <div className={styles.msg_id}>@Harry</div> */}
             </div>
-            {/* </div> */}
         </div>
     )
 }
