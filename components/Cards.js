@@ -41,8 +41,12 @@ export const Cards = (req,res, gridbase) => {
   const handleOpen = () => {
     setOpen(true);
   };
-
-
+  const handleLike=()=>{
+    if(!fav)
+    setFav(true);
+    else
+    setFav(false);
+  }
   return (
     <div className={styles.cardsContainer}>
     { loading ? (
@@ -61,9 +65,10 @@ export const Cards = (req,res, gridbase) => {
         <div className={styles.iconContainer} >
           <IconButton aria-label="like" className='like'>
             {fav ?
-              <FavoriteIcon style={{color:"red"}} className={styles.icon} onClick={() => setFav(!fav)} />
+              <FavoriteIcon style={{color:"red"}} className={styles.icon} onClick={handleLike} />
+              
               :
-              <FavoriteBorderIcon className={styles.icon} onClick={() => setFav(!fav)} />
+              <FavoriteBorderIcon className={styles.icon} onClick={handleLike} />
             }
           </IconButton>
           <IconButton aria-label='Comment'><TextsmsIcon className={styles.icon} /></IconButton>
