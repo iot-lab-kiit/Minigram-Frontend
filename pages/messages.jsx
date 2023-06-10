@@ -5,6 +5,7 @@ import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import ChatSection from "../components/ChatSection.jsx";
 import Conversations from "../components/Conversations.jsx";
+import ContactList from "../components/ContactList.jsx";
 import { io } from 'socket.io-client';
 import { getDM, getMessages, createMessage } from "./api/api.js";
 
@@ -22,47 +23,50 @@ const messages = () => {
   const [friendList, setFriendList] = useState([]);
   const [friendNames, setFriendNames] = useState([]);
   const [searchOn, setSearchOn] = useState(false);
+  const [searchRes, showSearchRes] = useState([]);
   const socket = useRef();
   const scrollRef = useRef();
 
-  // useEffect(() => {
-  //   fetch("https://minigram-backend.onrender.com/user").then(response => {
-  //     return response.json();
-  //   }).then(data => {
-  //     setUser(data[0]);
-  //   }).catch(err => {
-  //     console.log(err.message)
-  //   })
-  // })
+  useEffect(() => {
+    fetch("https://minigram-backend.onrender.com/user").then(response => {
+      return response.json();
+    }).then(data => {
+      setUser(data[0]);
+    }).catch(err => {
+      console.log(err.message)
+    })
+  })
 
   // console.log(user)
 
-  useEffect(() => {
-    const variab = JSON.parse(localStorage.getItem('user_info'));
-    // console.log(variab)
-    setUser(variab)
-  })
+  // useEffect(() => {
+  //   const variab = JSON.parse(localStorage.getItem('user_info'));
+  //   // console.log(variab)
+  //   setUser(variab)
+  // })
 
   // useEffect(() =>
   //   console.log(user)
   // )
 
   useEffect(() => {
-    fetch("https://minigram-backend.onrender.com/user").then(response => {
-      return response.json();
-    }).then(res => {
-      setFriendList(res)
-    }).catch(err => {
-      console.log(err.message)
-    })
-  })
+    fetch("https://minigram-backend.onrender.com/user")
+      .then(response => {
+        return response.json();
+      }).then(res => {
+        // console.log(res) 
+        setFriendList([...friendList, ...res]);
+      }).catch(err => {
+        console.log(err.message)
+      })
+  }, [])
 
   // useEffect(() => {
   //   friendList.map((data) => {
-  //     // setFriendNames(data)
-  //     // console.log(data.name)
+  //     setFriendNames(data)
+  //     console.log(data.name)
   //   })
-  // }, [user])
+  // }, [])
 
   useEffect(() => {
     socket.current = io("ws://minigram-backend.onrender.com:8900");
@@ -153,8 +157,15 @@ const messages = () => {
   }, [dms]);
 
   const search = (data) => {
-    return data?.name.toLowerCase().includes(searchName);
+    const result = data?.name.toLowerCase().includes(searchName);
+    console.log(result)
+    if (result) {
+      console.log(data)
+      showSearchRes(data)
+    }
   }
+
+
 
   return (
     <div className={styles.msg_body}>
@@ -228,17 +239,19 @@ const messages = () => {
             <div className={styles.modalcontents}>
               <div className={styles.close} onClick={() => { setSearchOn(false), setSearchModal(false) }}>+</div>
               <div>
-                <input className={styles.nameSearch} type="text" placeholder="Search names" onChange={(e) => setSearchName(e.target.value)} />
+                <input className={styles.nameSearch} type="text" placeholder="Search names" value={searchName} onChange={(e) => { setSearchName(e.target.value), setSearchOn(true) }} />
+
                 <div className={styles.searchList}>
-                  {friendList.map((conversation) => (
+                  {friendList.map((conversation) =>
                     <div onClick={() => {
                       setCurrentChat(conversation)
                     }}>
                       <div onClick={() => { setMsgArea(true), setSearchModal(false) }} className={styles.message}>
-                        <Conversations conversation={search(conversation)} searchOn={searchOn} currentUser={user} />
+                        <ContactList conversation={conversation} searchOn={searchOn} currentUser={user} />
                       </div>
                     </div>
-                  ))}
+                  )}
+                  {/* {friendList.map((data)=> console.log(data))} */}
                 </div>
               </div>
             </div>
