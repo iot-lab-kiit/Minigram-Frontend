@@ -12,13 +12,13 @@ export const updateUser = (id, updatedUser) => API.patch(`/user/${id}`, updatedU
 export const deleteUser = (id) => API.delete(`/user/${id}`);
 
 //post api
-export const createPost = (newPost, token) => API.post('/post', newPost, { headers: { "Authorization": `Bearer ${token}` } }, { withCredentials: true });
-export const filterPosts = (search) => API.get(`/post/search?q=${search}`);
-export const fetchPost = (id) => API.get(`/post/${id}`);
-export const fetchPosts = () => API.get('/post');
-export const updatePost = (id, updatedPost, token) => API.patch(`/post/${id}`, updatedPost, { headers: { "Authorization": `Bearer ${token}` } }, { withCredentials: true });
-export const likePost = (postid, userid, token) => API.patch(`/post/like?p=${postid}&u=${userid}`, { headers: { "Authorization": `Bearer ${token}` } }, { withCredentials: true });
-export const deletePost = (id, token) => API.delete(`/post/${id}`, { headers: { "Authorization": `Bearer ${token}` } }, { withCredentials: true });
+export const createPost=(newPost)=>API.post('/post',newPost);
+export const filterPosts=(search)=>API.get(`/post/search?q=${search}`);
+export const fetchPost=(id)=>API.get(`/post/${id}`);
+export const fetchPosts=()=>API.get('/post');
+export const updatePost=(id,updatedPost,token)=>API.patch(`/post/${id}`,updatedPost,{ headers: { "Authorization" : `Bearer ${token}` }}, { withCredentials: true });
+export const likePost=(postid,userid,token)=>API.patch(`/post/like?p=${postid}&u=${userid}`, { headers: { "Authorization" : `Bearer ${token}` }}, { withCredentials: true });
+export const deletePost=(id,token)=>API.delete(`/post/${id}`, { headers: { "Authorization" : `Bearer ${token}` }}, { withCredentials: true });
 
 //comment api
 export const createComment = (id, comment, token) => API.post(`/comments/${id}`, comment, { headers: { "Authorization": `Bearer ${token}` } }, { withCredentials: true });

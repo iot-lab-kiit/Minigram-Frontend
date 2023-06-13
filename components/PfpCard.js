@@ -3,79 +3,68 @@ import styles from "../styles/profile.module.css";
 import styles1 from "../styles/Loader.module.css";
 import CommentIcon from "@mui/icons-material/Comment";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { fetchPosts } from "../pages/api/api";
-import CardMedia from "@mui/material/CardMedia";
-export const PfpCard = () => {
+import { likePost, fetchPost, fetchUser } from "../pages/api/api";
+
+export const PfpCard = (props) => {
   const [users, setUsers] = useState([]);
-  let s = [];
-  const fetchUserData = () => {
-    fetch("https://minigram-backend.onrender.com/post")
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setUsers(data);
-        setLoading(false); // Set loading to false when data fetched
-      });
-  };
-  const [userLikes, setLikes] = useState([]);
-  const [userComments, setComments] = useState([]);
-  useEffect(() => {
-    fetchUserData();
-  }, []);
+  // const [userLikes, setLikes] = useState([]);
+  const [posts, setPost] = useState([]);
 
   useEffect(() => {
-    fetchPosts().then((res) => {
-      console.log("hy");
-      console.log(res);
-      setLikes(res.data);
+    const user = JSON.parse(localStorage.getItem("user_info"));
+    // console.log(user);
+    fetchPost(user.result._id).then((resp) => {
+      setPost(resp.data);             
     });
-  }, []);
-  console.log(userLikes);
-  
+  });
 
-  // useEffect(() => {
-  //   getComments().then((resp) => {
-  //     console.log("hy");
-  //     console.log(resp);
-  //     setComments(resp.data);
-  //   });
-  // }, []);
-
-  // console.log("comments");
-  // console.log(userComments);
-  let c = 0;
-
+  let p = [];
+  if (posts != null) p = posts;
+  console.log(p);
+  // p = [
+  //   "https://i.pinimg.com/originals/12/04/94/120494876f3572f1ecb1f722fcc6e8b0.png",
+  //   "https://i.pinimg.com/736x/d2/8c/7c/d28c7c485b4a6a081610e0adaa8d5789--tree-wallpaper-wallpaper-desktop.jpg",
+  //   "https://i.pinimg.com/originals/97/76/ea/9776ea3c44ede2ba53f297c4c99b70a5.jpg",
+  //   "https://i.scdn.co/image/ab67706c0000da84bfb952f89350d7c8d6fae332",
+  // ];
   return (
     <div className={styles.grid}>
-       {loading ? (
-        <div className={styles1.loaderContainer}>
-          <div className={styles1.customLoader}></div>
-        </div>
-      ) : (
-      users.map((user) => (
+      {p.map((user) => (
         <div>
-          <div className={styles.photo}>
-            {console.log(user.creator.posts)}
-            {(s = Object.values(user.creator.posts))}
-            {/* 
-            <img
-              src={s[c++]} //for api integration src= {s}
-              alt=" post"
-            /> */}
-            {/* {photo.style.backgroundImage="url('https://i.scdn.co/image/ab67706c0000da84bfb952f89350d7c8d6fae332')"} */}
-
+          <div
+            className={styles.photo}
+            style={{
+              backgroundImage: `url(${user})`,
+              //  `url(${user})`,
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+            }}
+          >
+            {console.log(`url(${user})`)}
             <div className={styles.details}>
               <FavoriteIcon fontSize="large" style={{ color: "white" }} />{" "}
-              <p> {userLikes.length} </p>
+              {/* <p> {userLikes.length} </p> */}
               <CommentIcon fontSize="large" style={{ color: "white" }} />{" "}
-              <p> {userComments.length} </p>
-              {console.log(userComments)}
+              {/* <p> {userComments.length} </p> */}
             </div>
           </div>
         </div>
-      ))
-      )}
+      ))}
+      ;
     </div>
   );
 };
+
+// // useEffect(() => {
+//   fetchUser(props.account).then((resp) => {
+//     setUsers(resp.data);
+//   });
+// // });
+
+// console.log(users)
+
+{
+  // p = users.posts;
+}
+// console.log(users.posts)

@@ -5,7 +5,7 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { Card } from '@mui/material';
 import CardMedia from '@mui/material/CardMedia';
 export const Messages = () => {
-  const number=[1,2,3,4,5,6,7,8,9];
+  const number=[1,2,3,4,5];
   return (
     <div className={styles.messageContainer}>
       <div className={styles.heading}>Messages</div>
