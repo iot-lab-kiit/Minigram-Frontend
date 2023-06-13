@@ -165,8 +165,6 @@ const messages = () => {
     }
   }
 
-
-
   return (
     <div className={styles.msg_body}>
 
