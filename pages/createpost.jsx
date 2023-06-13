@@ -2,6 +2,7 @@ import React from "react";
 import { useRef, useState,useEffect } from "react";
 import Image from "next/image";
 import styles from "../styles/createPost.module.css";
+import styles1 from "../styles/Loader.module.css";
 import { useRouter } from "next/router";
 import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
 import { Box, TextField, MenuItem } from "@mui/material";
@@ -120,6 +121,7 @@ function createpost() {
   
   return (
     <div className={styles.miniGramCreatePost}>
+
       <div className={styles.miniGramCreatePostOuterContainer}>
         <div className={styles.miniGramCreatePostInner1Container}>
           <div className={styles.miniGramCreatePostForm}>
@@ -187,8 +189,6 @@ function createpost() {
                 placeholder="Press enter to add tags"
               />
             </div>
-            <p>Spotlights🔦</p>
-            </div>  
           </div>
         </div>
         <div className={styles.miniGramCreatePostInner2Container}>
@@ -208,7 +208,7 @@ function createpost() {
             </button>
           )}
         </div>
-      </div>
+      }
     </div>
   );
 }

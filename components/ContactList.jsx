@@ -2,23 +2,16 @@ import React from 'react'
 import styles from '../styles/MessagesPage.module.css';
 import { useState, useEffect } from "react";
 import { Avatar } from '@mui/material';
-import { fetchUser } from '../pages/api/api';
 
-export default function Conversations({ conversation, searchOn, currentUser }) {
-
+export default function ContactList({ conversation, searchOn, currentUser }) {
     const [friend, setFriend] = useState([]);
-
+    // console.log(conversation)
     useEffect(() => {
-        if (conversation) {
-            const friendId = conversation.members?.find((m) => m !== currentUser._id);
-            fetchUser(friendId).then((res) => {
-                setFriend(res.data);
-            }).catch((err) => console.log(err))
-        }
-    }, [conversation, currentUser])
-
+        setFriend(conversation)
+    }, [])
     return (
         <>
+
             <div className={styles.convoArea} >
                 <div>
                     <Avatar className={styles.Icon} alt="Remy Sharp" src={friend?.profilePic} />
@@ -28,5 +21,6 @@ export default function Conversations({ conversation, searchOn, currentUser }) {
                 </div>
             </div>
         </>
+
     )
 }
