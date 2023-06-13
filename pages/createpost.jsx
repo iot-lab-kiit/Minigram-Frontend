@@ -1,5 +1,5 @@
 import React from "react";
-import { useRef, useState,useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import styles from "../styles/createPost.module.css";
 import styles1 from "../styles/Loader.module.css";
@@ -8,8 +8,8 @@ import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
 import { Box, TextField, MenuItem } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import FileBase from 'react-file-base64'
-import ReactImageFileToBase64 from 'react-file-image-to-base64' 
-import {createPost} from "./api/api.js";
+import ReactImageFileToBase64 from 'react-file-image-to-base64'
+import { createPost } from "./api/api.js";
 
 const CssTextField = styled(TextField)({
   "& label.Mui-focused": {
@@ -41,7 +41,8 @@ function createpost() {
   const [image, setImage] = useState();
   const [filter, setFilter] = useState("");
   const [caption, setCaption] = useState("");
-  const [post, setPost] = useState({creator: "", message: "", filter: "", selectedFile: "", tags: []});
+  const [loading, setLoading] = useState(false);
+  const [post, setPost] = useState({ creator: "", message: "", filter: "", selectedFile: "", tags: [] });
   // console.log(tags);
   // const handleTagChange = (event) => {
   //   const value = event.target.value;
@@ -60,35 +61,37 @@ function createpost() {
     inputRef.current.click();
   }
   const handleSubmit = async (e) => {
+    setLoading(true);
+    console.log("hello")
     e.preventDefault();
     const user = JSON.parse(localStorage.getItem('user_info'));
     const userid = user.result._id;
     console.log(tags);
     console.log(userid);
 
-    const updatedPost = {...post,creator: userid,tags: tags,};
+    const updatedPost = { ...post, creator: userid, tags: tags, };
 
     console.log(updatedPost);
 
     await createPost(updatedPost).then((res) => {
-        console.log(res.data);
-      }).catch((error) => {
-        console.log(error);
-      });
-
+      console.log(res.data);
+    }).catch((error) => {
+      console.log(error);
+    });
+    setLoading(false);
     router.push("/");
   };
 
   const CustomisedButton = ({ triggerInput }) => {
     return (
-           <div className={styles.miniGramCreatePostInnerContainer} onClick={triggerInput}>
-                <h1>Choose an image</h1>
-                <FileUploadOutlinedIcon className={styles.miniGramCreatePostUploadIcon} />
-              </div>
+      <div className={styles.miniGramCreatePostInnerContainer} onClick={triggerInput}>
+        <h1>Choose an image</h1>
+        <FileUploadOutlinedIcon className={styles.miniGramCreatePostUploadIcon} />
+      </div>
     );
-};
+  };
 
-//sets and unsets tags
+  //sets and unsets tags
   const [tags, setTags] = React.useState([]);
   const removeTags = (indexToRemove) => {
     setTags([...tags.filter((_, index) => index !== indexToRemove)]);
@@ -104,9 +107,9 @@ function createpost() {
 
   function handleFileInputChange(event) {
     const file = event.target.files[0];
-  
+
     const reader = new FileReader();
-  
+
     reader.onloadend = () => {
       const base64 = reader.result;
       setPost((prevPost) => ({
@@ -114,11 +117,11 @@ function createpost() {
         selectedFile: base64,
       }));
     };
-  
+
     reader.readAsDataURL(file);
   }
-  
-  
+
+
   return (
     <div className={styles.miniGramCreatePost}>
 
@@ -136,7 +139,7 @@ function createpost() {
                 value={post.message}
                 helperText="Enter the snappy caption😎"
                 onChange={(e) => {
-                  setPost({...post,message: e.target.value});
+                  setPost({ ...post, message: e.target.value });
                 }}
               />
             </Box>
@@ -150,7 +153,7 @@ function createpost() {
                 value={post.filter}
                 defaultValue=""
                 onChange={(e) => {
-                  setPost({...post,filter: e.target.value});
+                  setPost({ ...post, filter: e.target.value });
                 }}
                 fullWidth
               >
@@ -167,49 +170,59 @@ function createpost() {
               </CssTextField>
             </Box>
             <div className={styles.multitags}>
-            <div className={styles.tagsInput}>
-              <ul className={styles.tags}>
-                {tags.map((tag, index) => (
-                  <li key={index} className={styles.tag}>
-                    <span className={styles.tagTitle}>{tag}</span>
-                    <span
-                      className={styles.tagcloseicon}
-                      onClick={() => removeTags(index)}
-                    >
-                      x
-                    </span>
-                  </li>
-                ))}
-              </ul>
-              <input
-                type="text"
-                onKeyUp={(event) =>
-                  event.key === "Enter" ? addTags(event) : null
-                }
-                placeholder="Press enter to add tags"
-              />
+              <div className={styles.tagsInput}>
+                <ul className={styles.tags}>
+                  {tags.map((tag, index) => (
+                    <li key={index} className={styles.tag}>
+                      <span className={styles.tagTitle}>{tag}</span>
+                      <span
+                        className={styles.tagcloseicon}
+                        onClick={() => removeTags(index)}
+                      >
+                        x
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+                <input
+                  type="text"
+                  onKeyUp={(event) =>
+                    event.key === "Enter" ? addTags(event) : null
+                  }
+                  placeholder="Press enter to add tags"
+                />
+              </div>
             </div>
           </div>
-        </div>
-        <div className={styles.miniGramCreatePostInner2Container}>
-          <div
-            className={styles.miniGramCreatePostContainer}
+          <div className={styles.miniGramCreatePostInner2Container}>
+            <div
+              className={styles.miniGramCreatePostContainer}
 
-          >
-            {post.selectedFile ? (
-              <Image alt="" src={post.selectedFile} height="200" width="200" style={{ height: "auto", width: "24.027vw", objectFit: "contain", position: "relative" }} />
-            ) : (
-              <ReactImageFileToBase64 onCompleted={(files)=>setPost({...post, selectedFile: files[0].base64_file})} CustomisedButton={CustomisedButton} multiple={true} />
-            )}
+            >
+              {post.selectedFile ? (
+                <Image alt="" src={post.selectedFile} height="200" width="200" style={{ height: "auto", width: "24.027vw", objectFit: "contain", position: "relative" }} />
+              ) : (
+                <ReactImageFileToBase64 onCompleted={(files) => setPost({ ...post, selectedFile: files[0].base64_file })} CustomisedButton={CustomisedButton} multiple={true} />
+              )}
+            </div>
+            {loading ? (
+              <div className={styles1.loaderContainer}>
+                <div className={styles1.customLoader}></div>
+              </div>
+            ) :
+              <>
+                post.selectedFile && (
+                <button onClick={handleSubmit} type="submit" className={styles.miniGramUploadButton}>
+                  Upload
+                </button>
+                )
+              </>
+
+            }
           </div>
-          {post.selectedFile && (
-            <button onClick={handleSubmit} type="submit"className={styles.miniGramUploadButton}>
-              Upload
-            </button>
-          )}
         </div>
-      }
-    </div>
+      </div>
+    </div >
   );
 }
 
