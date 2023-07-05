@@ -16,7 +16,7 @@ import styles1 from '../styles/Loader.module.css'
 import {fetchPosts,likePost} from '../pages/api/api';
 import {format} from 'timeago.js';
 
-export const Cards = (req,res, gridbase) => {
+export const Cards = (post,user,) => {
   const [fav, setFav] = useState(false);
   const [posts,setposts]=useState([])
   const [showComponent,setShowComponent]=useState(false);
@@ -41,11 +41,15 @@ export const Cards = (req,res, gridbase) => {
   const handleOpen = () => {
     setOpen(true);
   };
-  const handleLike=()=>{
-    if(!fav)
-    setFav(true);
-    else
-    setFav(false);
+  const token=localStorage.getItem("posttoken");
+  const likePost=async()=>{
+    await likePost(posts._id,token).then((res)=>{
+      if(res.status===200)
+      setFav(!fav);
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
   }
   return (
     <div className={styles.cardsContainer}>
@@ -65,10 +69,9 @@ export const Cards = (req,res, gridbase) => {
         <div className={styles.iconContainer} >
           <IconButton aria-label="like" className='like'>
             {fav ?
-              <FavoriteIcon style={{color:"red"}} className={styles.icon} onClick={handleLike} />
-              
+              <FavoriteIcon style={{color:"red"}} className={styles.icon}/>
               :
-              <FavoriteBorderIcon className={styles.icon} onClick={handleLike} />
+              <FavoriteBorderIcon className={styles.icon}/>
             }
           </IconButton>
           <IconButton aria-label='Comment'><TextsmsIcon className={styles.icon} /></IconButton>
