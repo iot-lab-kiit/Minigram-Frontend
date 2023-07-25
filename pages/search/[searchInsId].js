@@ -1,13 +1,16 @@
 import React from 'react'
 import SearchDetail from '../../components/SearchDetail';
 import { fetchPosts } from '../api/api';
-
-
+// import profile from '../profile'
+import profile from '../profile';
+import Profile from '../../components/Profile';
 const searchDetailPage =  (props) => {
     // console.log(props)
+    
   return (
         <div>
-        <SearchDetail  user={props.user}/>
+            {/* {console.log('from detaillll',props.user)} */}
+            <Profile user={props.user._id} />
         </div>
   )
 }
@@ -48,7 +51,5 @@ export const getStaticPaths =  async () => {
 
     
 }
-
-
 
 export default searchDetailPage

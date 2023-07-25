@@ -4,41 +4,51 @@ import classes from "../../styles/Search.module.css";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { fetchPosts } from "../api/api";
+import { fetchPosts, filterPosts } from "../api/api";
+import { searchUsers } from "../api/api";
 import Link from "next/link";
+import { Cards } from "../../components/Cards";
+import { FilteredPosts } from "../../components/FilteredPosts";
 
 const Search = () => {
   const [userInp, setUserInp] = useState('');
-  const [total, setTotal] = useState([]);
+  // const [total, setTotal] = useState([]);
   const [suggestedUsernames, setSuggestedUsernames] = useState([]);
-
+  const [filteredPosts, setFilteredPosts] = useState([]);
   useEffect(() => {
-    fetchPosts().then((res) => {
-      setTotal(res.data);
+    searchUsers(userInp).then((res) => {
+      console.log(res.data)
+      setSuggestedUsernames(res.data.slice(0,3))
     });
-  }, []);
+  }, [userInp]);
 
   const router = useRouter();
 
   const searchInputChnageHandler = async (e) => {
     const userInput = e.target.value;
     setUserInp(userInput);
-
-    if (userInput.length > 0) {
-      // setIsFocus(true);
-      const filteredUsernames = total.filter((username) =>
-        username.creator.name.toLowerCase().startsWith(userInput.toLowerCase())
-      );
-      setSuggestedUsernames(filteredUsernames.slice(1,4));
-    } else {
-      setSuggestedUsernames([]);
-    }
+    
+    // if (userInput.length > 0) {
+    //   // setIsFocus(true);
+    //   const filteredUsernames = total.filter((username) =>
+    //     username.creator.name.toLowerCase().startsWith(userInput.toLowerCase())
+    //   );
+    //   setSuggestedUsernames(filteredUsernames.slice(1,4));
+    // } else {
+    //   setSuggestedUsernames([]);
+    // }
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
     router.push(`/search/${userInp}`);
   };
+
+  const filterPostsHandler = async (item) => {
+    const query = item.title;
+    const posts = await filterPosts(query);
+    setFilteredPosts(posts.data);
+  }
 
 
 
@@ -60,11 +70,11 @@ const Search = () => {
     <Fragment>
       <Sidebar />
       <div
-        className={`container min-h-screen  mx-auto justify-center items-end flex flex-col space-y-38 ${classes.customsize}`}
+        className={`container mx-auto gap-20 justify-center items-end flex flex-col ${classes.customsize}`}
         onSubmit={submitHandler}
       >
         <form
-          className={` relative ${classes.form} h-fit pb-[14rem]   flex flex-col`}
+          className={` relative ${classes.form}  pb-[5rem] flex flex-col`}
         >
           <div className={`${classes.searchBar}   `}>
             <SearchOutlinedIcon
@@ -74,7 +84,7 @@ const Search = () => {
               onChange={searchInputChnageHandler}
               type="text"
               placeholder="Search User/Group/Pages"
-              className="py-2   placeholder:text-2xl"
+              className="py-2  placeholder:text-2xl"
             ></input>
           </div>
           <div
@@ -88,18 +98,21 @@ const Search = () => {
               } mx-auto gap-y-15`}
             >
               {suggestedUsernames.map((username) => (
-                <Link className="pt-[1rem]" href={`/search/${username.creator.name}`}><li  key={username.id}  className="border-b-2 text-bold text-3xl  border-slate-300 p-4" >
-                  {username.creator.name} 
+                <Link className="pt-[1rem]" href={`/search/${username.name}`}><li  key={username.id}  className="border-b-2 text-bold text-3xl  border-slate-300 p-4" >
+                  {username.name} 
                 </li></Link>
               ))}
             </ul>
           </div>
+
         </form>
-        <section className="text-white flex flex-col space-y-6">
+        
+        <section className="text-white flex pt-[4rem] flex-col space-y-6">
           <h1 className="text-purple-600" >Browse All</h1>
           <div className={`grid grid-cols-6 gap-x-10 gap-y-10`}>
             {searchD.map((i) => (
-              <div
+
+              <div onClick={() =>  filterPostsHandler(i)}
                 key={i.id}
                 className={` shadow-2xl relative ${classes.filterCard}`}
                 style={{ backgroundColor: i.bg }}
@@ -107,13 +120,20 @@ const Search = () => {
                 <span className={classes.cardHead}>{i.title}</span>
                 <div className=" h-40 w-[100%]  rounded-full" >
                 <img className="w-[100%] h-[100%] bg-contain bg-center rounded-xl shadow-2xl " src={i.img} alt={i.title}/>
-              
                   </div>
               </div>
             ))}
           </div>
+        
+
+        </section>  
+        <section className="w-[100vh]  py-[1rem] flex flex-col justify-center items-center" >
+
+          {  filteredPosts &&   <div className="h-[1px] w-full"> <FilteredPosts filteredPosts={filteredPosts} /></div>}
         </section>
+        
       </div>
+              {/* <FilteredPosts posts={filterPosts}/> */}
     </Fragment>
   );
 };
