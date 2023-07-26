@@ -7,7 +7,6 @@ import { useRouter } from "next/router";
 import { fetchPosts, filterPosts } from "../api/api";
 import { searchUsers } from "../api/api";
 import Link from "next/link";
-import { Cards } from "../../components/Cards";
 import { FilteredPosts } from "../../components/FilteredPosts";
 
 const Search = () => {
