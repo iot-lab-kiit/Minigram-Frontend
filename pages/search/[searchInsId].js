@@ -1,12 +1,15 @@
 import React from 'react'
 import SearchDetail from '../../components/SearchDetail';
 import { fetchPosts } from '../api/api';
+import { Sidebar } from "../../components/Sidebar";
+import styles from '../../styles/SearchDetail.module.css'
 
 
 const searchDetailPage =  (props) => {
     // console.log(props)
   return (
-        <div>
+    <div className={styles.searchContainer}>
+            <Sidebar />
         <SearchDetail  user={props.user}/>
         </div>
   )
