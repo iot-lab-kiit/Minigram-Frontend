@@ -12,11 +12,11 @@ import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import TextsmsIcon from '@mui/icons-material/Textsms';
 import SendSharpIcon from '@mui/icons-material/SendSharp';
 import styles from '../styles/Cards.module.css';
-import styles1 from '../styles/Loader.module.css'
+import loaderStyles from '../styles/Loader.module.css'
 import {fetchPosts,likePost} from '../pages/api/api';
 import {format} from 'timeago.js';
 
-export const Cards = (req,res, gridbase) => {
+export const Cards = ({className}) => {
   const [fav, setFav] = useState(false);
   const [posts,setposts]=useState([])
   const [showComponent,setShowComponent]=useState(false);
@@ -48,10 +48,10 @@ export const Cards = (req,res, gridbase) => {
     setFav(false);
   }
   return (
-    <div className={styles.cardsContainer}>
+    <div className={`${styles.cardsContainer} ${className}`}>
     { loading ? (
-      <div className={styles1.loaderContainer}>
-        <div className={styles1.customLoader}></div> 
+      <div className={loaderStyles.loaderContainer}>
+        <div className={loaderStyles.customLoader}></div>
       </div>
      ) : (
      posts.map((post)=>(

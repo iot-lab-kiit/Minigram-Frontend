@@ -36,7 +36,7 @@ const SearchDetail = ({user}) => {
                 
                 <div className='flex flex-col gap-10 font-bold'>
                     <h1 className='text-4xl'>Posts</h1>
-                    {!user?.creator?.posts?  <h1 className='text-5xl font-bold text-center text-purple-900 '>NO POSTS FOUND!</h1>:<Cards posts={user} />}
+                    {!user?.creator?.posts?  <h1 className='text-5xl font-bold text-center text-purple-900 '>NO POSTS FOUND!</h1>:<Cards className="flex flex-wrap" posts={user} />}
                     
                 </div>
             </div> : <h1 className='text-5xl text-purple-900' >NO USER FOUND!</h1>
