@@ -17,7 +17,7 @@ import {fetchPosts,likePost} from '../pages/api/api';
 import {format} from 'timeago.js';
 
 export const Cards = ({className}) => {
-  const [fav, setFav] = useState(false);
+  const [fav, setFav] = useState({});
   const [posts,setposts]=useState([])
   const [showComponent,setShowComponent]=useState(false);
   const [open, setOpen] = React.useState(false);
@@ -41,11 +41,11 @@ export const Cards = ({className}) => {
   const handleOpen = () => {
     setOpen(true);
   };
-  const handleLike=()=>{
-    if(!fav)
-    setFav(true);
+  const handleLike=(id)=>{
+    if (!fav[id])
+      setFav({...fav, [id]: true});
     else
-    setFav(false);
+      setFav({...fav, [id]: false});
   }
   return (
     <div className={`${styles.cardsContainer} ${className}`}>
@@ -64,11 +64,11 @@ export const Cards = ({className}) => {
         <CardMedia component="img" className={styles.post} image={post.selectedFile} alt="Paella dish" />
         <div className={styles.iconContainer} >
           <IconButton aria-label="like" className='like'>
-            {fav ?
-              <FavoriteIcon style={{color:"red"}} className={styles.icon} onClick={handleLike} />
+            {fav[post._id] ?
+              <FavoriteIcon style={{color:"red"}} className={styles.icon} onClick={() => handleLike(post._id)} />
               
               :
-              <FavoriteBorderIcon className={styles.icon} onClick={handleLike} />
+              <FavoriteBorderIcon className={styles.icon} onClick={() => handleLike(post._id)} />
             }
           </IconButton>
           <IconButton aria-label='Comment'><TextsmsIcon className={styles.icon} /></IconButton>
